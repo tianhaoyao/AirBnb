@@ -4,21 +4,24 @@
  * and open the template in the editor.
  */
 
+package database;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author parththakkar
  */
 public class MainDatabase {
     
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "rootpassword";
-    private static final String CONN_STRING = 
-            "jdbc:mysql://localhost:3306/mybnb";
+
     
     
     
     public static void main(String[] args) {
         
+
         
     }
     
