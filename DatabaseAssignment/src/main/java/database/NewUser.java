@@ -235,10 +235,28 @@ public class NewUser extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
+            /*
             // setup connection
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb/?zeroDateTimeBehavior=convertToNull?useSSL=false","root","rootpassword");
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO users VALUES (?,?,?,?,?,?,?)");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+            String query = null;
+            if(jComboBox1.getSelectedItem().toString().equals("Renter")) {
+                query = "INSERT into renter VALUES (?,?,?,?)";
+                
+            } else {
+                
+            }
+            
+            PreparedStatement type = conn.prepareStatement(query);
+            
+            */
+            
+            
+            
+            
+            
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO users VALUES (?,?,?,?,?,?,?,?,2,3,4)");
             ps.setString(1,jTextField1.getText());
             ps.setString(2,String.valueOf(jPasswordField1.getPassword()));
             ps.setString(3,jTextField3.getText());
@@ -246,6 +264,7 @@ public class NewUser extends javax.swing.JFrame {
             ps.setString(5, "0");
             ps.setString(6,jTextField2.getText());
             ps.setString(7, jTextField6.getText() + "-" + jTextField5.getText() + "-" + jTextField4.getText());
+            ps.setString(8, jTextField1.getText());
             ps.executeUpdate();   
             System.out.println("BRUHHHHHHHHHHHHHHHHHH");
             
@@ -256,7 +275,8 @@ public class NewUser extends javax.swing.JFrame {
             System.out.println(rs.getInt(2));
             
         } catch (SQLException e){
-            
+            System.out.println("error");
+            System.err.println(e.getMessage());
         }
         
    
