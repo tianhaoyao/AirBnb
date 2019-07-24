@@ -7,6 +7,8 @@ package database;
 
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author parththakkar
@@ -226,14 +228,48 @@ public class NewUser extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        System.out.println("TEST");
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb/?zeroDateTimeBehavior=convertToNull?useSSL=false","root","rootpassword");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO users VALUES (?,?,?,?,?,?,?)");
+            ps.setString(1,jTextField1.getText());
+            ps.setString(2,String.valueOf(jPasswordField1.getPassword()));
+            ps.setString(3,jTextField3.getText());
+            ps.setString(4,"LOL");
+            ps.setString(5, "0");
+            ps.setString(6,jTextField2.getText());
+            ps.setString(7, jTextField6.getText() + "-" + jTextField5.getText() + "-" + jTextField4.getText());
+            ps.executeUpdate();   
+            System.out.println("BRUHHHHHHHHHHHHHHHHHH");
+            
+            String query = "SELECT * FROM users";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            rs.next();
+            System.out.println(rs.getInt(2));
+            
+        } catch (SQLException e){
+            
+        }
+        
+   
+       
+        
+      
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws SQLException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -262,7 +298,7 @@ public class NewUser extends javax.swing.JFrame {
             public void run() {
                 new NewUser().setVisible(true);
             }
-        });
+        });  
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
