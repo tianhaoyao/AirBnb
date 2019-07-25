@@ -25,8 +25,7 @@ CREATE TABLE IF NOT EXISTS `my_bnb`.`has_rented` (
   `list_id` INT NOT NULL,
   `comment` VARCHAR(45) NULL,
   `rating` INT NULL,
-  PRIMARY KEY (`u_id`, `list_id`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`u_id`, `list_id`));
 
 
 -- -----------------------------------------------------
@@ -43,8 +42,7 @@ CREATE TABLE IF NOT EXISTS `my_bnb`.`renter` (
     FOREIGN KEY (`has_rented_u_id` , `has_rented_list_id`)
     REFERENCES `my_bnb`.`has_rented` (`u_id` , `list_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
@@ -53,8 +51,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `my_bnb`.`listed` (
   `u_id` INT NOT NULL,
   `list_id` INT NOT NULL,
-  PRIMARY KEY (`u_id`, `list_id`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`u_id`, `list_id`));
 
 
 -- -----------------------------------------------------
@@ -82,8 +79,7 @@ CREATE TABLE IF NOT EXISTS `my_bnb`.`listings` (
     FOREIGN KEY (`listed_u_id` , `listed_list_id`)
     REFERENCES `my_bnb`.`listed` (`u_id` , `list_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
@@ -99,8 +95,7 @@ CREATE TABLE IF NOT EXISTS `my_bnb`.`hosts` (
     FOREIGN KEY (`listed_u_id` , `listed_list_id`)
     REFERENCES `my_bnb`.`listed` (`u_id` , `list_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
@@ -130,8 +125,7 @@ CREATE TABLE IF NOT EXISTS `my_bnb`.`comments` (
     FOREIGN KEY (`renter_u_id`)
     REFERENCES `my_bnb`.`renter` (`u_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
@@ -161,8 +155,7 @@ CREATE TABLE IF NOT EXISTS `my_bnb`.`users` (
     FOREIGN KEY (`comments_hosts_u_id` , `comments_renter_u_id` , `comments_listings_list_id`)
     REFERENCES `my_bnb`.`comments` (`hosts_u_id` , `renter_u_id` , `listings_list_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

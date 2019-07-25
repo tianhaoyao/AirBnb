@@ -236,8 +236,10 @@ public class NewUser extends javax.swing.JFrame {
                 Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            
             // setup connection
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+            /*
             String query = null;
             PreparedStatement newUser = null;
             if(jComboBox1.getSelectedItem().toString().equals("Renter")) {
@@ -246,40 +248,37 @@ public class NewUser extends javax.swing.JFrame {
                 newUser = conn.prepareStatement("INSERT INTO `hosts` () VALUES()");  
             }
                 newUser.executeUpdate();
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("error");
-                System.err.println(ex.getMessage());
-            }
+            */    
+           
    
                 
                 
+               
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO `users` (password,address,occupation,sin_num,name,dob) VALUES ()");
+            ps.setString(1,jTextField1.getText());
+            ps.setString(2,String.valueOf(jPasswordField1.getPassword()));
+            ps.setString(3,jTextField3.getText());
+            ps.setString(4,"LOL");
+            ps.setString(5, "0");
+            ps.setString(6,jTextField2.getText());
+            ps.setString(7, jTextField6.getText() + "-" + jTextField5.getText() + "-" + jTextField4.getText());
+            ps.setString(8, jTextField1.getText());
+            ps.executeUpdate();
+            System.out.println("BRUHHHHHHHHHHHHHHHHHH");
+            
+            /*
+            String query = "SELECT * FROM users";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            rs.next();
+            System.out.println(rs.getInt(2));
+            */
                 
-                /*
-                PreparedStatement ps = conn.prepareStatement("INSERT INTO users VALUES (?,?,?,?,?,?,?,?,2,3,4)");
-                ps.setString(1,jTextField1.getText());
-                ps.setString(2,String.valueOf(jPasswordField1.getPassword()));
-                ps.setString(3,jTextField3.getText());
-                ps.setString(4,"LOL");
-                ps.setString(5, "0");
-                ps.setString(6,jTextField2.getText());
-                ps.setString(7, jTextField6.getText() + "-" + jTextField5.getText() + "-" + jTextField4.getText());
-                ps.setString(8, jTextField1.getText());
-                ps.executeUpdate();
-                System.out.println("BRUHHHHHHHHHHHHHHHHHH");
-                
-                String query = "SELECT * FROM users";
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
-                rs.next();
-                System.out.println(rs.getInt(2));
-                
-                } catch (SQLException e){
-                System.out.println("error");
-                System.err.println(e.getMessage());
-                }
-            */  
+            } catch (SQLException e){
+              System.out.println("error");
+              System.err.println(e.getMessage());
+            }
+            
        
         
       
