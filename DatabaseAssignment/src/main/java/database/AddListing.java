@@ -196,6 +196,7 @@ public class AddListing extends javax.swing.JFrame {
             ps.executeUpdate();
             System.out.println("listing enter works");
             
+            
             } catch (SQLException e){
               System.out.println("error");
               System.err.println(e.getMessage());
