@@ -274,7 +274,7 @@ public class NewUser extends javax.swing.JFrame {
    
                 
                 
-               
+            PreparedStatement user = null  ; 
             PreparedStatement ps = conn.prepareStatement("INSERT INTO `users` (password,address,occupation,sin_num,name,dob) VALUES (?,?,?,?,?,?)");
             //ps.setString(1,jTextField1.getText());
             ps.setString(1,String.valueOf(passwordField.getPassword()));
@@ -284,7 +284,16 @@ public class NewUser extends javax.swing.JFrame {
             ps.setString(5,nameField.getText());
             ps.setString(6, yearField.getText() + "-" + monthField.getText() + "-" + dateField.getText());
             ps.executeUpdate();
-            System.out.println("BRUHHHHHHHHHHHHHHHHHH");
+            System.out.println("user enter works");
+            if(userSelector.getSelectedItem().toString().equals("Renter")) {
+              user = conn.prepareStatement("INSERT INTO `renter` (u_id) VALUES (LAST_INSERT_ID())");
+            } else {
+              user = conn.prepareStatement("INSERT INTO `hosts` (u_id) VALUES (LAST_INSERT_ID())");
+            }
+            user.executeUpdate();
+            System.out.println("renter/hosts enter works");
+
+            
             
             /*
             String query = "SELECT * FROM users";
