@@ -153,7 +153,6 @@ public class SearchListing extends javax.swing.JFrame {
             ps.setString(1,condition);
             ResultSet rs = ps.executeQuery();
             System.out.println("listing search works");
-            DefaultListModel demoList = new DefaultListModel();
             
             int rowIndex = 0;
             while (rs.next() && rowIndex < model.getRowCount()) {
