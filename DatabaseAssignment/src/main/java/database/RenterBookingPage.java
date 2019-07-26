@@ -8,6 +8,7 @@ package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,8 +41,10 @@ public class RenterBookingPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        year = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        month = new javax.swing.JTextField();
+        date = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,7 +68,13 @@ public class RenterBookingPage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Add a booking");
 
-        jLabel4.setText("Date");
+        year.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yearActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Date (YYYY-MM-DD)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,18 +84,22 @@ public class RenterBookingPage extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(jLabel3)
-                .addContainerGap(107, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(listingIdField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(renterIdField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))
-                    .addComponent(jLabel4))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(listingIdField)
+                    .addComponent(renterIdField)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +117,10 @@ public class RenterBookingPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         renterIdField.getAccessibleContext().setAccessibleName("");
@@ -124,8 +140,10 @@ public class RenterBookingPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 16, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -158,24 +176,24 @@ public class RenterBookingPage extends javax.swing.JFrame {
             
             // setup connection
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
-            /*
-            String query = null;
-            PreparedStatement newUser = null;
-            if(jComboBox1.getSelectedItem().toString().equals("Renter")) {
-                newUser = conn.prepareStatement("INSERT INTO `renter` () VALUES()");  
-            } else {
-                newUser = conn.prepareStatement("INSERT INTO `hosts` () VALUES()");  
+            
+            // make resultset of the desired listing id and date
+            PreparedStatement verify = conn.prepareStatement("SELECT * FROM `listing_dates` WHERE `listing_dates`= (?) AND `listings_list_id`= (?))");
+            String wantedDate = year.getText() + "-" + month.getText() + date.getText();
+            verify.setString(1,wantedDate);
+            ResultSet rs = verify.executeQuery();
+            
+            // if resultset isn't empty, that means the listing id exists for that date and can be booked
+            if(rs.next()){
+                PreparedStatement ps = conn.prepareStatement("INSERT INTO `renter_has_listings` (renter_u_id,listings_list_id) VALUES (?,?)");
+                //ps.setString(1,jTextField1.getText());
+                ps.setString(1,renterIdField.getText());
+                ps.setString(2,listingIdField.getText());
+                ps.executeUpdate();
             }
-                newUser.executeUpdate();
-            */    
-           
-               
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO `renter_has_listings` (renter_u_id,listings_list_id) VALUES (?,?)");
-            //ps.setString(1,jTextField1.getText());
-            ps.setString(1,renterIdField.getText());
-            ps.setString(2,listingIdField.getText());
-            ps.executeUpdate();
-            System.out.println("BRUHHHHHHHHHHHHHHHHHH");
+            else {
+                System.out.println("Listing not available for that date");
+            }
             
             /*
             String query = "SELECT * FROM users";
@@ -194,6 +212,10 @@ public class RenterBookingPage extends javax.swing.JFrame {
     private void renterIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renterIdFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_renterIdFieldActionPerformed
+
+    private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_yearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,14 +253,16 @@ public class RenterBookingPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField date;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField listingIdField;
+    private javax.swing.JTextField month;
     private javax.swing.JTextField renterIdField;
     private javax.swing.JButton submitButton;
+    private javax.swing.JTextField year;
     // End of variables declaration//GEN-END:variables
 }
