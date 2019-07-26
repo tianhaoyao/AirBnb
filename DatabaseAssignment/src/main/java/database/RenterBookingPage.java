@@ -178,9 +178,10 @@ public class RenterBookingPage extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
             
             // make resultset of the desired listing id and date
-            PreparedStatement verify = conn.prepareStatement("SELECT * FROM `listing_dates` WHERE `listing_dates`= (?) AND `listings_list_id`= (?))");
-            String wantedDate = year.getText() + "-" + month.getText() + date.getText();
+            PreparedStatement verify = conn.prepareStatement("SELECT * FROM `listing_dates` WHERE `listing_dates`= (?) AND `listings_list_id`= (?)");
+            String wantedDate = year.getText() + "-" + month.getText() + "-" + date.getText();
             verify.setString(1,wantedDate);
+            verify.setString(2,listingIdField.getText());
             ResultSet rs = verify.executeQuery();
             
             // if resultset isn't empty, that means the listing id exists for that date and can be booked
