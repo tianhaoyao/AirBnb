@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -69,6 +71,11 @@ public class SearchListings extends javax.swing.JFrame {
         tableDisplay3 = new javax.swing.JScrollPane();
         priceTable = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        ratingDropdown = new javax.swing.JComboBox<>();
+        ratingSearch = new javax.swing.JButton();
+        tableDisplay4 = new javax.swing.JScrollPane();
+        priceTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -250,29 +257,29 @@ public class SearchListings extends javax.swing.JFrame {
 
         distanceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "List id", "Name", "Address", "Description", "Lat", "Long", "Amenities"
+                "List id", "Name", "Address", "Description", "Lat", "Long", "Amenities", "Distance"
             }
         ));
         tableDisplay2.setViewportView(distanceTable);
@@ -386,6 +393,9 @@ public class SearchListings extends javax.swing.JFrame {
             }
         ));
         tableDisplay3.setViewportView(priceTable);
+        if (priceTable.getColumnModel().getColumnCount() > 0) {
+            priceTable.getColumnModel().getColumn(7).setHeaderValue("Rent");
+        }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -425,15 +435,75 @@ public class SearchListings extends javax.swing.JFrame {
 
         searchOptions.addTab("Search by price", jPanel4);
 
+        jPanel5.setBackground(new java.awt.Color(204, 255, 204));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Select Rating:");
+
+        ratingDropdown.setBackground(new java.awt.Color(153, 255, 204));
+        ratingDropdown.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ratingDropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 Star\t", "2 Star\t", "3 Star ", "4 Star ", "5 Star" }));
+
+        ratingSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ratingSearch.setText("Search");
+
+        priceTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "List id", "Name", "Address", "Description", "Lat", "Long", "Amenities", "Rating"
+            }
+        ));
+        tableDisplay4.setViewportView(priceTable1);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 848, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(154, 154, 154)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ratingDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ratingSearch)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tableDisplay4, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(ratingDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ratingSearch))
+                .addGap(18, 18, 18)
+                .addComponent(tableDisplay4, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         searchOptions.addTab("Search by rating", jPanel5);
@@ -541,6 +611,9 @@ public class SearchListings extends javax.swing.JFrame {
     private void distanceSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distanceSearchActionPerformed
         // TODO add your handling code here:
         
+        
+        
+        
         double lat = Double.parseDouble(latSearch.getText());
         double lon = Double.parseDouble(longSearch.getText());
         
@@ -572,8 +645,10 @@ public class SearchListings extends javax.swing.JFrame {
                             rs.getString("list_address"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities")});
                 rowIndex++; 
                 }
-                
+                distanceTable.setAutoCreateRowSorter(true);
             }
+            //TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(distanceTable.getModel());
+           // distanceTable.setRowSorter(sorter);
             
             /*
             int rowIndex = 0;
@@ -691,6 +766,7 @@ public class SearchListings extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -704,8 +780,11 @@ public class SearchListings extends javax.swing.JFrame {
     private javax.swing.JTextField priceLower;
     private javax.swing.JButton priceSearch;
     private javax.swing.JTable priceTable;
+    private javax.swing.JTable priceTable1;
     private javax.swing.JTextField priceUpper;
     private javax.swing.JSlider rangeSlider;
+    private javax.swing.JComboBox<String> ratingDropdown;
+    private javax.swing.JButton ratingSearch;
     private javax.swing.JButton searchButtonAddress;
     private javax.swing.JButton searchButtonName;
     private javax.swing.JTabbedPane searchOptions;
@@ -713,5 +792,6 @@ public class SearchListings extends javax.swing.JFrame {
     private javax.swing.JScrollPane tableDisplay1;
     private javax.swing.JScrollPane tableDisplay2;
     private javax.swing.JScrollPane tableDisplay3;
+    private javax.swing.JScrollPane tableDisplay4;
     // End of variables declaration//GEN-END:variables
 }
