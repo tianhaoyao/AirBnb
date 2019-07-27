@@ -59,7 +59,7 @@ public class SearchListings extends javax.swing.JFrame {
         tableDisplay2 = new javax.swing.JScrollPane();
         distanceTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
+        rangeSlider = new javax.swing.JSlider();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
 
@@ -272,7 +272,7 @@ public class SearchListings extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Range:");
 
-        jSlider1.setValue(0);
+        rangeSlider.setValue(0);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -290,7 +290,7 @@ public class SearchListings extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rangeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(distanceSearch)
                 .addGap(47, 47, 47))
@@ -315,7 +315,7 @@ public class SearchListings extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addComponent(longSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel5))
-                            .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(rangeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addComponent(tableDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -451,7 +451,11 @@ public class SearchListings extends javax.swing.JFrame {
 
     private void distanceSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distanceSearchActionPerformed
         // TODO add your handling code here:
-         DefaultTableModel model ;
+        
+        double lat = Double.parseDouble(latSearch.getText());
+        double lon = Double.parseDouble(longSearch.getText());
+        
+        DefaultTableModel model ;
         model = (DefaultTableModel)distanceTable.getModel();
         try {
             try {
@@ -468,8 +472,18 @@ public class SearchListings extends javax.swing.JFrame {
             Statement s = conn.createStatement();
             ResultSet rs = s.executeQuery("SELECT * from listings");
             System.out.println("listing search works");
-            while(rs.next()) {
-                System.out.println(rs.getString("list_name"));
+            int rowIndex = 0;
+            while(rs.next() && rowIndex < model.getRowCount()) {
+                double tmpLat = Double.parseDouble(rs.getString("latitude"));
+                double tmpLong = Double.parseDouble(rs.getString("longitude"));
+                double distance = Math.sqrt(Math.pow(lat-tmpLat,2) + Math.pow(lon-tmpLong,2));
+                if(distance <= rangeSlider.getComponentCount()) {
+                   model.insertRow(rowIndex, 
+                        new Object [] {rs.getString("list_id"),rs.getString("list_name"),
+                            rs.getString("list_address"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities")});
+                rowIndex++; 
+                }
+                
             }
             
             /*
@@ -540,12 +554,12 @@ public class SearchListings extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JTextField latSearch;
     private javax.swing.JTable listTable;
     private javax.swing.JTable listTableAddress;
     private javax.swing.JTextField longSearch;
     private javax.swing.JTextField nameSearchField;
+    private javax.swing.JSlider rangeSlider;
     private javax.swing.JButton searchButtonAddress;
     private javax.swing.JButton searchButtonName;
     private javax.swing.JTabbedPane searchOptions;
