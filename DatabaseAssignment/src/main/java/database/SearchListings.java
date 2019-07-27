@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -61,7 +62,7 @@ public class SearchListings extends javax.swing.JFrame {
         tableDisplay2 = new javax.swing.JScrollPane();
         distanceTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        rangeSlider = new javax.swing.JSlider();
+        rangeSlider = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         priceLower = new javax.swing.JTextField();
@@ -72,10 +73,10 @@ public class SearchListings extends javax.swing.JFrame {
         priceTable = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        ratingDropdown = new javax.swing.JComboBox<>();
         ratingSearch = new javax.swing.JButton();
         tableDisplay4 = new javax.swing.JScrollPane();
-        priceTable1 = new javax.swing.JTable();
+        ratingTable = new javax.swing.JTable();
+        ratingField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,7 +152,7 @@ public class SearchListings extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(nameSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchButtonName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(tableDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -228,7 +229,7 @@ public class SearchListings extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(addressSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchButtonAddress))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(tableDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -285,14 +286,12 @@ public class SearchListings extends javax.swing.JFrame {
         tableDisplay2.setViewportView(distanceTable);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Range:");
+        jLabel5.setText("Range radius:");
 
         rangeSlider.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        rangeSlider.setPaintLabels(true);
-        rangeSlider.setValue(0);
-        rangeSlider.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                rangeSliderPropertyChange(evt);
+        rangeSlider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rangeSliderActionPerformed(evt);
             }
         });
 
@@ -311,9 +310,9 @@ public class SearchListings extends javax.swing.JFrame {
                 .addComponent(longSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rangeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rangeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(distanceSearch)
                 .addGap(47, 47, 47))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -330,15 +329,15 @@ public class SearchListings extends javax.swing.JFrame {
                         .addComponent(distanceSearch)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel3)
-                                .addComponent(latSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4)
-                                .addComponent(longSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5))
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(latSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(longSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
                             .addComponent(rangeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addComponent(tableDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -428,7 +427,7 @@ public class SearchListings extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(priceUpper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(priceSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(tableDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -440,14 +439,15 @@ public class SearchListings extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Select Rating:");
 
-        ratingDropdown.setBackground(new java.awt.Color(153, 255, 204));
-        ratingDropdown.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ratingDropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 Star\t", "2 Star\t", "3 Star ", "4 Star ", "5 Star" }));
-
         ratingSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ratingSearch.setText("Search");
+        ratingSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ratingSearchActionPerformed(evt);
+            }
+        });
 
-        priceTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ratingTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -474,7 +474,14 @@ public class SearchListings extends javax.swing.JFrame {
                 "List id", "Name", "Address", "Description", "Lat", "Long", "Amenities", "Rating"
             }
         ));
-        tableDisplay4.setViewportView(priceTable1);
+        tableDisplay4.setViewportView(ratingTable);
+
+        ratingField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ratingField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ratingFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -484,8 +491,8 @@ public class SearchListings extends javax.swing.JFrame {
                 .addGap(154, 154, 154)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ratingDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ratingField, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ratingSearch)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -499,10 +506,10 @@ public class SearchListings extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(ratingDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ratingSearch))
-                .addGap(18, 18, 18)
-                .addComponent(tableDisplay4, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                    .addComponent(ratingSearch)
+                    .addComponent(ratingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(tableDisplay4, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -619,6 +626,7 @@ public class SearchListings extends javax.swing.JFrame {
         
         DefaultTableModel model ;
         model = (DefaultTableModel)distanceTable.getModel();
+        
         try {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -639,7 +647,7 @@ public class SearchListings extends javax.swing.JFrame {
                 double tmpLat = Double.parseDouble(rs.getString("latitude"));
                 double tmpLong = Double.parseDouble(rs.getString("longitude"));
                 double distance = Math.sqrt(Math.pow(lat-tmpLat,2) + Math.pow(lon-tmpLong,2));
-                if(distance <= rangeSlider.getComponentCount()) {
+                if(distance <= Double.parseDouble(rangeSlider.getText())) {
                    model.insertRow(rowIndex, 
                         new Object [] {rs.getString("list_id"),rs.getString("list_name"),
                             rs.getString("list_address"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities")});
@@ -669,10 +677,6 @@ public class SearchListings extends javax.swing.JFrame {
     
     }//GEN-LAST:event_distanceSearchActionPerformed
 
-    private void rangeSliderPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_rangeSliderPropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rangeSliderPropertyChange
-
     private void priceSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceSearchActionPerformed
         // TODO add your handling code here:
         
@@ -690,13 +694,14 @@ public class SearchListings extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
          
    
-            PreparedStatement ps = conn.prepareStatement("SELECT list_id from listing_dates WHERE rent_amount BETWEEN (?) AND (?)");
+            PreparedStatement ps = conn.prepareStatement("SELECT DISTINCT listings_list_id,rent_amount from listing_dates WHERE rent_amount BETWEEN (?) AND (?)");
             ps.setString(1,priceLower.getText());
-            ps.setString(1,priceUpper.getText());
-            ps.executeQuery();
+            ps.setString(2,priceUpper.getText());
+            String oldQuery = (ps.toString().substring(49));
+            
             System.out.println("listing search works");
             Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * from listings,listing_dates INNER JOIN listings ON listings.list_id = listing_dates.listings_list_id");
+            ResultSet rs = s.executeQuery("SELECT DISTINCT listings.list_id,listings.list_name, listings.list_address, listings.description,listings.latitude,listings.longitude,listings.amenities,rent_amount FROM listings L1,(" + oldQuery +") L2 INNER JOIN listings ON listings.list_id = L2.listings_list_id");
             int rowIndex = 0;
             while (rs.next() && rowIndex < model.getRowCount()) {
                 System.out.println(rs.getString("list_address"));
@@ -719,6 +724,55 @@ public class SearchListings extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_priceSearchActionPerformed
+
+    private void rangeSliderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rangeSliderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rangeSliderActionPerformed
+
+    private void ratingSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingSearchActionPerformed
+       
+        
+        DefaultTableModel model ;
+        model = (DefaultTableModel)ratingTable.getModel();
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+   
+            PreparedStatement ps = conn.prepareStatement("SELECT DISTINCT listings_list_id,rating from renter_has_listings WHERE rating = (?)");
+            ps.setString(1,ratingField.getText());
+            String oldQuery = (ps.toString().substring(49));
+            System.out.println(oldQuery);
+            System.out.println("listing search works");
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("SELECT DISTINCT listings.list_id,listings.list_name, listings.list_address, listings.description,listings.latitude,listings.longitude,listings.amenities,rating FROM listings L1,(" + oldQuery +") L2 INNER JOIN listings ON listings.list_id = L2.listings_list_id");
+            int rowIndex = 0;
+            while (rs.next() && rowIndex < model.getRowCount()) {
+                System.out.println(rs.getString("list_address"));
+                model.insertRow(rowIndex, 
+                        new Object [] {rs.getString("list_id"),rs.getString("list_name"),
+                            rs.getString("list_address"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities"),rs.getString("rent_amount")});
+                rowIndex++;
+            }
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+     
+        
+    }//GEN-LAST:event_ratingSearchActionPerformed
+
+    private void ratingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ratingFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -780,11 +834,11 @@ public class SearchListings extends javax.swing.JFrame {
     private javax.swing.JTextField priceLower;
     private javax.swing.JButton priceSearch;
     private javax.swing.JTable priceTable;
-    private javax.swing.JTable priceTable1;
     private javax.swing.JTextField priceUpper;
-    private javax.swing.JSlider rangeSlider;
-    private javax.swing.JComboBox<String> ratingDropdown;
+    private javax.swing.JTextField rangeSlider;
+    private javax.swing.JTextField ratingField;
     private javax.swing.JButton ratingSearch;
+    private javax.swing.JTable ratingTable;
     private javax.swing.JButton searchButtonAddress;
     private javax.swing.JButton searchButtonName;
     private javax.swing.JTabbedPane searchOptions;
