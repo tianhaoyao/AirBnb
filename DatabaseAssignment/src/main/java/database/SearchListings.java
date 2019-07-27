@@ -61,10 +61,18 @@ public class SearchListings extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         rangeSlider = new javax.swing.JSlider();
         jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        priceLower = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        priceUpper = new javax.swing.JTextField();
+        priceSearch = new javax.swing.JButton();
+        tableDisplay3 = new javax.swing.JScrollPane();
+        priceTable = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        searchOptions.setBackground(new java.awt.Color(204, 204, 255));
         searchOptions.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 153));
@@ -272,7 +280,14 @@ public class SearchListings extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Range:");
 
+        rangeSlider.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        rangeSlider.setPaintLabels(true);
         rangeSlider.setValue(0);
+        rangeSlider.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                rangeSliderPropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -323,15 +338,89 @@ public class SearchListings extends javax.swing.JFrame {
 
         searchOptions.addTab("Search by distance ", jPanel3);
 
+        jPanel4.setBackground(new java.awt.Color(255, 204, 204));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Price ($) between:");
+
+        priceLower.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("and");
+
+        priceUpper.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        priceSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        priceSearch.setText("Search");
+        priceSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priceSearchActionPerformed(evt);
+            }
+        });
+
+        priceTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "List id", "Name", "Address", "Description", "Lat", "Long", "Amenities", "Rent"
+            }
+        ));
+        tableDisplay3.setViewportView(priceTable);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 848, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(priceLower, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(priceUpper, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(priceSearch)
+                .addContainerGap(290, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tableDisplay3)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(priceLower, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(priceUpper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(priceSearch))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(tableDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         searchOptions.addTab("Search by price", jPanel4);
@@ -505,6 +594,57 @@ public class SearchListings extends javax.swing.JFrame {
     
     }//GEN-LAST:event_distanceSearchActionPerformed
 
+    private void rangeSliderPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_rangeSliderPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rangeSliderPropertyChange
+
+    private void priceSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceSearchActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultTableModel model ;
+        model = (DefaultTableModel)priceTable.getModel();
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+   
+            PreparedStatement ps = conn.prepareStatement("SELECT list_id from listing_dates WHERE rent_amount BETWEEN (?) AND (?)");
+            ps.setString(1,priceLower.getText());
+            ps.setString(1,priceUpper.getText());
+            ps.executeQuery();
+            System.out.println("listing search works");
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * from listings,listing_dates INNER JOIN listings ON listings.list_id = listing_dates.listings_list_id");
+            int rowIndex = 0;
+            while (rs.next() && rowIndex < model.getRowCount()) {
+                System.out.println(rs.getString("list_address"));
+                model.insertRow(rowIndex, 
+                        new Object [] {rs.getString("list_id"),rs.getString("list_name"),
+                            rs.getString("list_address"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities"),rs.getString("rent_amount")});
+                rowIndex++;
+            }
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_priceSearchActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -549,6 +689,8 @@ public class SearchListings extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -559,6 +701,10 @@ public class SearchListings extends javax.swing.JFrame {
     private javax.swing.JTable listTableAddress;
     private javax.swing.JTextField longSearch;
     private javax.swing.JTextField nameSearchField;
+    private javax.swing.JTextField priceLower;
+    private javax.swing.JButton priceSearch;
+    private javax.swing.JTable priceTable;
+    private javax.swing.JTextField priceUpper;
     private javax.swing.JSlider rangeSlider;
     private javax.swing.JButton searchButtonAddress;
     private javax.swing.JButton searchButtonName;
@@ -566,5 +712,6 @@ public class SearchListings extends javax.swing.JFrame {
     private javax.swing.JScrollPane tableDisplay;
     private javax.swing.JScrollPane tableDisplay1;
     private javax.swing.JScrollPane tableDisplay2;
+    private javax.swing.JScrollPane tableDisplay3;
     // End of variables declaration//GEN-END:variables
 }
