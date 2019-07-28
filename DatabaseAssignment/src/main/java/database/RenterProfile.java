@@ -345,6 +345,11 @@ public class RenterProfile extends javax.swing.JFrame {
 
         commentHost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         commentHost.setText("Add comment");
+        commentHost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commentHostActionPerformed(evt);
+            }
+        });
 
         viewTableComment.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -380,6 +385,11 @@ public class RenterProfile extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("View hosts");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -714,8 +724,53 @@ public class RenterProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_userPassCommentActionPerformed
 
     private void commentFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentFieldActionPerformed
-        // TODO add your handling code here:
+        
+        
+                                               
     }//GEN-LAST:event_commentFieldActionPerformed
+
+    private void commentHostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentHostActionPerformed
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+            // checks whether the renter has rented from the host before
+            PreparedStatement ps = conn.prepareStatement("SELECT * from renter_has_listings INNER JOIN hosts_has_listings ON renter_has_listings.listings_list_id = hosts_has_listings.listings_list_id WHERE  hosts_has_listings.hosts_u_id=(?)");
+            System.out.println("ioegigijerg");
+            
+            ps.setString(1,hostComment.getText());
+            ResultSet rs = ps.executeQuery();
+            
+            // if renter rented from host then insert comment
+            if (rs.next()) {
+                System.out.println("found match");
+                PreparedStatement addComment = conn.prepareStatement("INSERT INTO host_comments (comment,commenter_id,commentee_id) VALUES (?,?,?)");
+                addComment.setString(1,commentField.getText());
+                addComment.setString(2,hostComment.getText());
+                addComment.setString(3,userComment.getText());
+                addComment.executeUpdate();
+            }
+            else{
+                System.out.println("no found match");
+            }
+            
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_commentHostActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
