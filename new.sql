@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `my_bnb`.`users` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `my_bnb`.`renter` (
   `u_id` INT NOT NULL,
+  `payment` VARCHAR(45) NULL,
   PRIMARY KEY (`u_id`),
   UNIQUE INDEX `u_id_UNIQUE` (`u_id` ASC),
   FOREIGN KEY (`u_id`) REFERENCES `my_bnb`.`users` (`u_id`)
@@ -112,7 +113,27 @@ CREATE TABLE IF NOT EXISTS `my_bnb`.`bookings` (
 -- -----------------------------------------------------
 -- Table `my_bnb`.`comments`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `my_bnb`.`comments` (
+CREATE TABLE IF NOT EXISTS `my_bnb`.`host_comments` (
   `comment` VARCHAR(45) NULL,
-  `listings_list_id` INT NULL)
-  ;
+  `listings_list_id` INT NULL,
+  `commenter_id` INT NOT NULL,
+  `commentee_id` INT NOT NULL,
+  PRIMARY KEY (`commenter_id`, `commentee_id`),
+  INDEX `fk_host_comments_renter1_idx` (`commentee_id` ASC),
+  FOREIGN KEY (`commenter_id`) REFERENCES `my_bnb`.`hosts` (`u_id`),
+  FOREIGN KEY (`commentee_id`) REFERENCES `my_bnb`.`renter` (`u_id`)
+   );
+   
+   CREATE TABLE IF NOT EXISTS `my_bnb`.`renter_comments` (
+  `comment` VARCHAR(45) NULL,
+  `listings_list_id` INT NULL,
+  `commenter_id` INT NOT NULL,
+  `commentee_id` INT NOT NULL,
+  PRIMARY KEY (`commenter_id`, `commentee_id`),
+  INDEX `fk_renter_comments_hosts1_idx` (`commentee_id` ASC),
+  FOREIGN KEY (`commenter_id`) REFERENCES `my_bnb`.`renter` (`u_id`),
+  FOREIGN KEY (`commentee_id`) REFERENCES `my_bnb`.`hosts` (`u_id`)
+);
+   
+   
+   

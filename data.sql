@@ -11,7 +11,7 @@ INSERT INTO `my_bnb`.`users` (`password`,`address`,`occupation`,`sin_num`,`name`
 INSERT INTO `my_bnb`.`users` (`password`,`address`,`occupation`,`sin_num`,`name`,`dob`) VALUES ('mypassword78','4566 Underwood cresent','Doctor',1274,'Kendra Grey','1992-05-04');
 
 -- renter data
-INSERT INTO `my_bnb`.`renter`(`u_id`) VALUES(1);
+INSERT INTO `my_bnb`.`renter`(`u_id`,`payment`) VALUES(1,"Credit Card: 1234");
 INSERT INTO `my_bnb`.`renter`(`u_id`) VALUES(5);
 INSERT INTO `my_bnb`.`renter`(`u_id`) VALUES(6);
 INSERT INTO `my_bnb`.`renter`(`u_id`) VALUES(7);
