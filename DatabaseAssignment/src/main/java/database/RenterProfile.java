@@ -483,6 +483,7 @@ public class RenterProfile extends javax.swing.JFrame {
         viewCommentListings.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         viewCommentListings.setText("View listings");
 
+        addListingComment.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addListingComment.setText("Add comment");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -520,7 +521,7 @@ public class RenterProfile extends javax.swing.JFrame {
                                 .addGap(51, 51, 51)
                                 .addComponent(addListingComment))
                             .addComponent(listingComment, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 165, Short.MAX_VALUE)))
+                        .addGap(0, 143, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -540,7 +541,7 @@ public class RenterProfile extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(listingComment, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(tableDisplay11, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
