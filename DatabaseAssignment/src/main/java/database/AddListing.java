@@ -8,7 +8,9 @@ package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -71,6 +73,12 @@ public class AddListing extends javax.swing.JFrame {
         jLabel1.setText("Add listing");
 
         jLabel2.setText("Name");
+
+        listLat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listLatActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Latitude");
 
@@ -315,19 +323,49 @@ public class AddListing extends javax.swing.JFrame {
 
     private void showPriceSuggestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPriceSuggestionActionPerformed
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        double lat = Double.parseDouble(listLat.getText());
+        double lon = Double.parseDouble(listLong.getText());
+
+
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+
+            Statement ps = conn.createStatement();
+            ResultSet rs = ps.executeQuery("SELECT latitude,longitude,rent_amount from listings");
+
+            System.out.println("listing search works");
+            
+            Double rentAvg = 0.0;
+            int rentCounter = 0;
+            while(rs.next()) {
+                double tmpLat = Double.parseDouble(rs.getString("latitude"));
+                double tmpLong = Double.parseDouble(rs.getString("longitude"));
+                double distance = Math.sqrt(Math.pow(lat-tmpLat,2) + Math.pow(lon-tmpLong,2));
+                if(distance <= 10) {
+                    rentAvg = rentAvg + Double.parseDouble(rs.getString("rent_amount"));
+                    rentCounter++;
+                }
+            }
+            
+            suggestedPrice.setText(String.valueOf(rentAvg/rentCounter));
+         
+
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        } 
     }//GEN-LAST:event_showPriceSuggestionActionPerformed
+
+    private void listLatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listLatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listLatActionPerformed
 
     /**
      * @param args the command line arguments
