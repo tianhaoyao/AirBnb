@@ -64,6 +64,17 @@ public class RenterProfile extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         bookingPassword = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        userComment = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        hostComment = new javax.swing.JTextField();
+        userPassComment = new javax.swing.JPasswordField();
+        commentHost = new javax.swing.JButton();
+        tableDisplay10 = new javax.swing.JScrollPane();
+        viewTableComment = new javax.swing.JTable();
+        commentField = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +130,7 @@ public class RenterProfile extends javax.swing.JFrame {
         ));
         tableDisplay8.setViewportView(renterTable);
         if (renterTable.getColumnModel().getColumnCount() > 0) {
+            renterTable.getColumnModel().getColumn(0).setHeaderValue("List id");
             renterTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
@@ -180,7 +192,7 @@ public class RenterProfile extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
                     .addComponent(userPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(tableDisplay8, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -234,6 +246,9 @@ public class RenterProfile extends javax.swing.JFrame {
             }
         ));
         tableDisplay9.setViewportView(viewBookingTable);
+        if (viewBookingTable.getColumnModel().getColumnCount() > 0) {
+            viewBookingTable.getColumnModel().getColumn(2).setHeaderValue("List id");
+        }
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Password:");
@@ -290,22 +305,119 @@ public class RenterProfile extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(bookingPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tableDisplay9, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         renterBooking.addTab("View/Cancel booking", jPanel2);
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("User id:");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setText("Password:");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setText("Host id:");
+
+        hostComment.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        userPassComment.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        userPassComment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userPassCommentActionPerformed(evt);
+            }
+        });
+
+        commentHost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        commentHost.setText("Add comment");
+
+        viewTableComment.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "User id", "Host id", "Place name", "Renting Date"
+            }
+        ));
+        tableDisplay10.setViewportView(viewTableComment);
+
+        commentField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        commentField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commentFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setText("Comment:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 887, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tableDisplay10, javax.swing.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(112, 112, 112)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(userComment, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9)
+                                .addGap(2, 2, 2)
+                                .addComponent(userPassComment, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(hostComment, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(commentField))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(commentHost)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(userComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10)
+                        .addComponent(hostComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userPassComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)
+                        .addComponent(commentHost))
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(commentField, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(29, 29, 29)
+                .addComponent(tableDisplay10, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         renterBooking.addTab("Comment on hosts", jPanel3);
@@ -471,6 +583,14 @@ public class RenterProfile extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cancelBookingActionPerformed
 
+    private void userPassCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userPassCommentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userPassCommentActionPerformed
+
+    private void commentFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_commentFieldActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -511,15 +631,22 @@ public class RenterProfile extends javax.swing.JFrame {
     private javax.swing.JTextField bookDate;
     private javax.swing.JPasswordField bookingPassword;
     private javax.swing.JButton cancelBooking;
+    private javax.swing.JTextField commentField;
+    private javax.swing.JButton commentHost;
     private javax.swing.JTextField dateField;
+    private javax.swing.JTextField hostComment;
     private javax.swing.JLabel jField12;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -527,13 +654,17 @@ public class RenterProfile extends javax.swing.JFrame {
     private javax.swing.JTextField listingField;
     private javax.swing.JTabbedPane renterBooking;
     private javax.swing.JTable renterTable;
+    private javax.swing.JScrollPane tableDisplay10;
     private javax.swing.JScrollPane tableDisplay8;
     private javax.swing.JScrollPane tableDisplay9;
+    private javax.swing.JTextField userComment;
     private javax.swing.JTextField userField;
     private javax.swing.JTextField userIdField;
+    private javax.swing.JPasswordField userPassComment;
     private javax.swing.JPasswordField userPassword;
     private javax.swing.JTable viewBookingTable;
     private javax.swing.JButton viewListings;
     private javax.swing.JButton viewListingsCurrent;
+    private javax.swing.JTable viewTableComment;
     // End of variables declaration//GEN-END:variables
 }
