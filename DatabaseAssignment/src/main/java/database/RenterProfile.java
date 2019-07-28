@@ -769,7 +769,38 @@ public class RenterProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_commentHostActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model ;
+        model = (DefaultTableModel)viewTableComment.getModel();
+        model.setRowCount(0);
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+   
+            PreparedStatement ps = conn.prepareStatement("SELECT * from bookings INNER JOIN listings ON listings.list_id = bookings.listings_list_id");
+            ResultSet rs = ps.executeQuery();
+            System.out.println("listing search works");
+            model.setRowCount(1);
+            int rowIndex = 0;
+            while (rs.next() && rowIndex < model.getRowCount()) {
+ 
+                model.insertRow(rowIndex, 
+                        new Object [] {rs.getString("u_id"),rs.getString("cancelled"),
+                            rs.getString("list_name"),rs.getString("booking_date")});
+                rowIndex++;
+            }
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
