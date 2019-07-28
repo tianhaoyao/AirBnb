@@ -41,131 +41,66 @@ public class SearchListings extends javax.swing.JFrame {
     private void initComponents() {
 
         searchOptions = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        nameSearchField = new javax.swing.JTextField();
-        searchButtonName = new javax.swing.JButton();
-        tableDisplay = new javax.swing.JScrollPane();
-        listTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        addressSearchField = new javax.swing.JTextField();
+        cityField = new javax.swing.JTextField();
         searchButtonAddress = new javax.swing.JButton();
-        tableDisplay1 = new javax.swing.JScrollPane();
+        tableDisplay5 = new javax.swing.JScrollPane();
         listTableAddress = new javax.swing.JTable();
+        codeField = new javax.swing.JTextField();
+        countryField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        addressBox = new javax.swing.JComboBox<>();
+        cityBox = new javax.swing.JCheckBox();
+        codeBox = new javax.swing.JCheckBox();
+        countryBox = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         latSearch = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         longSearch = new javax.swing.JTextField();
         distanceSearch = new javax.swing.JButton();
-        tableDisplay2 = new javax.swing.JScrollPane();
-        distanceTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         rangeSlider = new javax.swing.JTextField();
+        tableDisplay6 = new javax.swing.JScrollPane();
+        distanceTable = new javax.swing.JTable();
+        priceBox = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         priceLower = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         priceUpper = new javax.swing.JTextField();
         priceSearch = new javax.swing.JButton();
-        tableDisplay3 = new javax.swing.JScrollPane();
+        tableDisplay7 = new javax.swing.JScrollPane();
         priceTable = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        ratingSearch = new javax.swing.JButton();
-        tableDisplay4 = new javax.swing.JScrollPane();
+        dateSearch = new javax.swing.JButton();
+        lowerDate = new javax.swing.JTextField();
+        tableDisplay8 = new javax.swing.JScrollPane();
         ratingTable = new javax.swing.JTable();
-        ratingField = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        upperDate = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         searchOptions.setBackground(new java.awt.Color(204, 204, 255));
         searchOptions.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Name:");
-
-        nameSearchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        searchButtonName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        searchButtonName.setText("Search");
-        searchButtonName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonNameActionPerformed(evt);
-            }
-        });
-
-        listTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "List id", "Name", "Address", "Description", "Lat", "Long", "Amenities"
-            }
-        ));
-        tableDisplay.setViewportView(listTable);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nameSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(searchButtonName)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tableDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nameSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButtonName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(tableDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        searchOptions.addTab("Search by name", jPanel1);
-
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Address:");
+        jLabel2.setText("City");
         jLabel2.setToolTipText("");
 
-        addressSearchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cityField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cityField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cityFieldActionPerformed(evt);
+            }
+        });
 
         searchButtonAddress.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         searchButtonAddress.setText("Search");
@@ -177,60 +112,103 @@ public class SearchListings extends javax.swing.JFrame {
 
         listTableAddress.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "List id", "Name", "Address", "Description", "Lat", "Long", "Amenities"
+                "List id", "Name", "City", "Postal code", "Country", "Description", "Lat", "Long", "Amenities", "Rent"
             }
         ));
-        tableDisplay1.setViewportView(listTableAddress);
+        tableDisplay5.setViewportView(listTableAddress);
+
+        codeField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        countryField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setText("Postal Code");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setText("Country");
+
+        addressBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Postal Code", "City ", "Country ", "Full Address" }));
+        addressBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressBoxActionPerformed(evt);
+            }
+        });
+
+        cityBox.setText("include");
+        cityBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cityBoxActionPerformed(evt);
+            }
+        });
+
+        codeBox.setText("include");
+
+        countryBox.setText("include");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addressSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchButtonAddress)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tableDisplay1, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
+                .addComponent(tableDisplay5, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(addressBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cityBox)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel10))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(codeBox))
+                                    .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(countryBox)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(countryField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(51, 51, 51)
+                                        .addComponent(searchButtonAddress)))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(addressSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButtonAddress))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(tableDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchButtonAddress)
+                    .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(countryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addressBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cityBox)
+                    .addComponent(codeBox)
+                    .addComponent(countryBox))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(tableDisplay5, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -256,90 +234,88 @@ public class SearchListings extends javax.swing.JFrame {
             }
         });
 
-        distanceTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "List id", "Name", "Address", "Description", "Lat", "Long", "Amenities", "Distance"
-            }
-        ));
-        tableDisplay2.setViewportView(distanceTable);
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Range radius:");
 
         rangeSlider.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        rangeSlider.setText("10");
         rangeSlider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rangeSliderActionPerformed(evt);
             }
         });
 
+        distanceTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "List id", "Name", "City", "Postal code", "Country", "Description", "Lat", "Long", "Amenities", "Rent", "Distance"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableDisplay6.setViewportView(distanceTable);
+
+        priceBox.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        priceBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Asc\t", "Desc" }));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setText("Sort by price");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(latSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(longSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rangeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(distanceSearch)
-                .addGap(47, 47, 47))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tableDisplay2)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(latSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(longSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rangeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(priceBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                        .addComponent(distanceSearch))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tableDisplay6)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(distanceSearch)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(latSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(longSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(rangeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addComponent(tableDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(35, 35, 35)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(latSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(longSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(rangeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(distanceSearch)
+                    .addComponent(priceBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
+                .addComponent(tableDisplay6, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         searchOptions.addTab("Search by distance ", jPanel3);
@@ -366,35 +342,32 @@ public class SearchListings extends javax.swing.JFrame {
 
         priceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "List id", "Name", "Address", "Description", "Lat", "Long", "Amenities", "Rent"
+                "List id", "Name", "City", "Postal code", "Country", "Description", "Lat", "Long", "Amenities"
             }
         ));
-        tableDisplay3.setViewportView(priceTable);
-        if (priceTable.getColumnModel().getColumnCount() > 0) {
-            priceTable.getColumnModel().getColumn(7).setHeaderValue("Rent");
-        }
+        tableDisplay7.setViewportView(priceTable);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -411,11 +384,12 @@ public class SearchListings extends javax.swing.JFrame {
                 .addComponent(priceUpper, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(priceSearch)
-                .addContainerGap(290, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tableDisplay3)
-                .addContainerGap())
+                .addContainerGap(311, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(tableDisplay7, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,9 +401,12 @@ public class SearchListings extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(priceUpper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(priceSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(tableDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(422, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addContainerGap(107, Short.MAX_VALUE)
+                    .addComponent(tableDisplay7, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(30, Short.MAX_VALUE)))
         );
 
         searchOptions.addTab("Search by price", jPanel4);
@@ -437,49 +414,59 @@ public class SearchListings extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Select Rating:");
+        jLabel8.setText("Select Range(yyyy/mm/dd): ");
 
-        ratingSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ratingSearch.setText("Search");
-        ratingSearch.addActionListener(new java.awt.event.ActionListener() {
+        dateSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        dateSearch.setText("Search");
+        dateSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ratingSearchActionPerformed(evt);
+                dateSearchActionPerformed(evt);
+            }
+        });
+
+        lowerDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lowerDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lowerDateActionPerformed(evt);
             }
         });
 
         ratingTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "List id", "Name", "Address", "Description", "Lat", "Long", "Amenities", "Rating"
+                "List id", "Name", "City", "Postal code", "Country", "Description", "Lat", "Long", "Amenities", "Rent"
             }
         ));
-        tableDisplay4.setViewportView(ratingTable);
+        tableDisplay8.setViewportView(ratingTable);
 
-        ratingField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ratingField.addActionListener(new java.awt.event.ActionListener() {
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setText("to");
+
+        upperDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        upperDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ratingFieldActionPerformed(evt);
+                upperDateActionPerformed(evt);
             }
         });
 
@@ -488,16 +475,20 @@ public class SearchListings extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(154, 154, 154)
+                .addGap(140, 140, 140)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ratingField, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ratingSearch)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lowerDate, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addComponent(upperDate, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(dateSearch)
+                .addContainerGap(245, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tableDisplay4, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
+                .addComponent(tableDisplay8)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -506,30 +497,26 @@ public class SearchListings extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(ratingSearch)
-                    .addComponent(ratingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(tableDisplay4, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(dateSearch)
+                    .addComponent(lowerDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(upperDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(tableDisplay8, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
-        searchOptions.addTab("Search by rating", jPanel5);
+        searchOptions.addTab("Search by Date", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(searchOptions)
-                .addContainerGap())
+            .addComponent(searchOptions)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(searchOptions)
-                .addContainerGap())
+            .addComponent(searchOptions)
         );
 
         searchOptions.getAccessibleContext().setAccessibleName("Search by name");
@@ -537,149 +524,58 @@ public class SearchListings extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchButtonNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonNameActionPerformed
-        
-        DefaultTableModel model ;
-        model = (DefaultTableModel)listTable.getModel();
-        try {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-            // setup connection
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
-         
-   
-            PreparedStatement ps = conn.prepareStatement("SELECT * from listings WHERE list_name LIKE (?)");
-            String condition = "%" + nameSearchField.getText() + "%";
-            System.out.println(condition);
-            ps.setString(1,condition);
-            ResultSet rs = ps.executeQuery();
-            System.out.println("listing search works");
-            
-            int rowIndex = 0;
-            while (rs.next() && rowIndex < model.getRowCount()) {
-                System.out.println(rs.getString("list_address"));
-                model.insertRow(rowIndex, 
-                        new Object [] {rs.getString("list_id"),rs.getString("list_name"),
-                            rs.getString("list_address"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities")});
-                rowIndex++;
-            }
-          
-        } catch (SQLException e) {
-            System.out.println("error");
-            System.err.println(e.getMessage());
-        }
-                                
-    }//GEN-LAST:event_searchButtonNameActionPerformed
-
-    private void searchButtonAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonAddressActionPerformed
+    private void upperDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upperDateActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model ;
-        model = (DefaultTableModel)listTableAddress.getModel();
-        try {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-            // setup connection
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
-         
-   
-            PreparedStatement ps = conn.prepareStatement("SELECT * from listings WHERE list_address LIKE (?)");
-            String condition = "%" + addressSearchField.getText() + "%";
-            System.out.println(condition);
-            ps.setString(1,condition);
-            ResultSet rs = ps.executeQuery();
-            System.out.println("listing search works");
-            
-            int rowIndex = 0;
-            while (rs.next() && rowIndex < model.getRowCount()) {
-                System.out.println(rs.getString("list_address"));
-                model.insertRow(rowIndex, 
-                        new Object [] {rs.getString("list_id"),rs.getString("list_name"),
-                            rs.getString("list_address"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities")});
-                rowIndex++;
-            }
-          
-        } catch (SQLException e) {
-            System.out.println("error");
-            System.err.println(e.getMessage());
-        }
-                
-    }//GEN-LAST:event_searchButtonAddressActionPerformed
+    }//GEN-LAST:event_upperDateActionPerformed
 
-    private void distanceSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distanceSearchActionPerformed
+    private void lowerDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lowerDateActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-        
-        double lat = Double.parseDouble(latSearch.getText());
-        double lon = Double.parseDouble(longSearch.getText());
-        
+    }//GEN-LAST:event_lowerDateActionPerformed
+
+    private void dateSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateSearchActionPerformed
+
         DefaultTableModel model ;
-        model = (DefaultTableModel)distanceTable.getModel();
-        
+        model = (DefaultTableModel)ratingTable.getModel();
+        model.setRowCount(0);
+
         try {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
+
             // setup connection
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
-         
-   
+
+            PreparedStatement ps = conn.prepareStatement("SELECT DISTINCT listings_list_id,listing_dates from listing_dates WHERE listing_dates >= ? AND listing_dates <= ?");
+            ps.setString(1,lowerDate.getText());
+            ps.setString(2,upperDate.getText());
+            String oldQuery = (ps.toString().substring(49));
+            System.out.println(oldQuery);
+            System.out.println("listing search works");
             Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * from listings");
-            System.out.println("listing search works");
+            ResultSet rs = s.executeQuery("SELECT DISTINCT listings.list_id,listings.list_name, listings.city,listings.postal_code,listings.country, listings.description,listings.latitude,listings.longitude,listings.amenities,listings.rent_amount FROM listings L1,(" + oldQuery +") L2 INNER JOIN listings ON listings.list_id = L2.listings_list_id");
+            model.setRowCount(1);
             int rowIndex = 0;
-            while(rs.next() && rowIndex < model.getRowCount()) {
-                double tmpLat = Double.parseDouble(rs.getString("latitude"));
-                double tmpLong = Double.parseDouble(rs.getString("longitude"));
-                double distance = Math.sqrt(Math.pow(lat-tmpLat,2) + Math.pow(lon-tmpLong,2));
-                if(distance <= Double.parseDouble(rangeSlider.getText())) {
-                   model.insertRow(rowIndex, 
-                        new Object [] {rs.getString("list_id"),rs.getString("list_name"),
-                            rs.getString("list_address"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities")});
-                rowIndex++; 
-                }
-                distanceTable.setAutoCreateRowSorter(true);
-            }
-            //TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(distanceTable.getModel());
-           // distanceTable.setRowSorter(sorter);
-            
-            /*
-            int rowIndex = 0;
-            // inserting into table
             while (rs.next() && rowIndex < model.getRowCount()) {
-                System.out.println(rs.getString("list_address"));
-                model.insertRow(rowIndex, 
-                        new Object [] {rs.getString("list_id"),rs.getString("list_name"),
-                            rs.getString("list_address"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities")});
+
+                model.insertRow(rowIndex,
+                    new Object [] {rs.getString("list_id"),rs.getString("list_name"),
+                        rs.getString("city"),rs.getString("postal_code"),rs.getString("country"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities"),rs.getString("rent_amount")});
                 rowIndex++;
             }
-            */
-          
+
         } catch (SQLException e) {
             System.out.println("error");
             System.err.println(e.getMessage());
         }
-    
-    }//GEN-LAST:event_distanceSearchActionPerformed
+
+    }//GEN-LAST:event_dateSearchActionPerformed
 
     private void priceSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceSearchActionPerformed
         // TODO add your handling code here:
-        
+
         DefaultTableModel model ;
         model = (DefaultTableModel)priceTable.getModel();
         try {
@@ -688,91 +584,177 @@ public class SearchListings extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
+
             // setup connection
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
-         
-   
+
             PreparedStatement ps = conn.prepareStatement("SELECT DISTINCT listings_list_id,rent_amount from listing_dates WHERE rent_amount BETWEEN (?) AND (?)");
             ps.setString(1,priceLower.getText());
             ps.setString(2,priceUpper.getText());
             String oldQuery = (ps.toString().substring(49));
-            
+
             System.out.println("listing search works");
             Statement s = conn.createStatement();
             ResultSet rs = s.executeQuery("SELECT DISTINCT listings.list_id,listings.list_name, listings.list_address, listings.description,listings.latitude,listings.longitude,listings.amenities,rent_amount FROM listings L1,(" + oldQuery +") L2 INNER JOIN listings ON listings.list_id = L2.listings_list_id");
             int rowIndex = 0;
             while (rs.next() && rowIndex < model.getRowCount()) {
                 System.out.println(rs.getString("list_address"));
-                model.insertRow(rowIndex, 
-                        new Object [] {rs.getString("list_id"),rs.getString("list_name"),
-                            rs.getString("list_address"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities"),rs.getString("rent_amount")});
+                model.insertRow(rowIndex,
+                    new Object [] {rs.getString("list_id"),rs.getString("list_name"),
+                        rs.getString("city"),rs.getString("postal_code"),rs.getString("country"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities")});
                 rowIndex++;
             }
-          
+
         } catch (SQLException e) {
             System.out.println("error");
             System.err.println(e.getMessage());
         }
-        
-        
-        
-        
-        
-        
-        
-        
+
     }//GEN-LAST:event_priceSearchActionPerformed
 
     private void rangeSliderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rangeSliderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rangeSliderActionPerformed
 
-    private void ratingSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingSearchActionPerformed
-       
-        
+    private void distanceSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distanceSearchActionPerformed
+        // TODO add your handling code here:
+
+        double lat = Double.parseDouble(latSearch.getText());
+        double lon = Double.parseDouble(longSearch.getText());
+
         DefaultTableModel model ;
-        model = (DefaultTableModel)ratingTable.getModel();
+        model = (DefaultTableModel)distanceTable.getModel();
+        model.setRowCount(0);
+
         try {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
+
             // setup connection
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
-         
-   
-            PreparedStatement ps = conn.prepareStatement("SELECT DISTINCT listings_list_id,rating from renter_has_listings WHERE rating = (?)");
-            ps.setString(1,ratingField.getText());
-            String oldQuery = (ps.toString().substring(49));
-            System.out.println(oldQuery);
-            System.out.println("listing search works");
+
             Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery("SELECT DISTINCT listings.list_id,listings.list_name, listings.list_address, listings.description,listings.latitude,listings.longitude,listings.amenities,rating FROM listings L1,(" + oldQuery +") L2 INNER JOIN listings ON listings.list_id = L2.listings_list_id");
+            ResultSet rs;
+            if(priceBox.getSelectedIndex() == 0) {
+                rs = s.executeQuery("SELECT * from listings");
+            } else if (priceBox.getSelectedIndex() == 1) {
+                rs = s.executeQuery("SELECT * from listings ORDER BY rent_amount ASC");
+            } else {
+                rs = s.executeQuery("SELECT * from listings ORDER BY rent_amount DESC");
+            }
+
+            model.setRowCount(1);
+            System.out.println("listing search works");
             int rowIndex = 0;
+            while(rs.next() && rowIndex < model.getRowCount()) {
+                double tmpLat = Double.parseDouble(rs.getString("latitude"));
+                double tmpLong = Double.parseDouble(rs.getString("longitude"));
+                double distance = Math.sqrt(Math.pow(lat-tmpLat,2) + Math.pow(lon-tmpLong,2));
+                String d = String.format("%.2f", distance);
+                if(distance <= Double.parseDouble(rangeSlider.getText())) {
+                    model.insertRow(rowIndex,
+                        new Object [] {rs.getString("list_id"),rs.getString("list_name"),
+                            rs.getString("city"),rs.getString("postal_code"),rs.getString("country"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities"),rs.getString("rent_amount"),Double.parseDouble(d)});
+                    rowIndex++;
+                }
+                distanceTable.setAutoCreateRowSorter(true);
+            }
+            //TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(distanceTable.getModel());
+            // distanceTable.setRowSorter(sorter);
+
+            /*
+            int rowIndex = 0;
+            // inserting into table
             while (rs.next() && rowIndex < model.getRowCount()) {
                 System.out.println(rs.getString("list_address"));
-                model.insertRow(rowIndex, 
-                        new Object [] {rs.getString("list_id"),rs.getString("list_name"),
-                            rs.getString("list_address"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities"),rs.getString("rent_amount")});
+                model.insertRow(rowIndex,
+                    new Object [] {rs.getString("list_id"),rs.getString("list_name"),
+                        rs.getString("list_address"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities")});
                 rowIndex++;
             }
-          
+            */
+
         } catch (SQLException e) {
             System.out.println("error");
             System.err.println(e.getMessage());
         }
-     
-        
-    }//GEN-LAST:event_ratingSearchActionPerformed
 
-    private void ratingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingFieldActionPerformed
+    }//GEN-LAST:event_distanceSearchActionPerformed
+
+    private void searchButtonAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonAddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ratingFieldActionPerformed
+        DefaultTableModel model ;
+        model = (DefaultTableModel)listTableAddress.getModel();
+        model.setRowCount(0);
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+
+            PreparedStatement ps = null ;
+            String condition = null;
+            if(addressBox.getSelectedIndex() == 0) {
+                ps = conn.prepareStatement("SELECT * from listings WHERE postal_code LIKE (?)");
+                condition = codeField.getText() + "%";
+                ps.setString(1,condition);
+
+            } else if(addressBox.getSelectedIndex() == 1) {
+                ps = conn.prepareStatement("SELECT * from listings WHERE city = ?");
+                condition = cityField.getText();
+                ps.setString(1,condition);
+
+            } else if (addressBox.getSelectedIndex() == 2) {
+                ps = conn.prepareStatement("SELECT * from listings WHERE country =?");
+                condition = countryField.getText();
+                ps.setString(1,condition);
+
+            } else {
+                ps = conn.prepareStatement("SELECT * from listings WHERE postal_code=(?) AND city =(?) AND country=(?)");
+                ps.setString(1,codeField.getText());
+                ps.setString(2,cityField.getText());
+                ps.setString(3,countryField.getText());
+
+            }
+
+            model.setRowCount(1);
+            ResultSet rs = ps.executeQuery();
+            System.out.println("listing search works");
+
+            int rowIndex = 0;
+            while (rs.next() && rowIndex < model.getRowCount()) {
+
+                model.insertRow(rowIndex,
+                    new Object [] {rs.getString("list_id"),rs.getString("list_name"),
+                        rs.getString("city"),rs.getString("postal_code"),rs.getString("country"),rs.getString("description"),rs.getString("latitude"),rs.getString("longitude"),rs.getString("amenities"),rs.getString("rent_amount")});
+                rowIndex++;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+
+    }//GEN-LAST:event_searchButtonAddressActionPerformed
+
+    private void cityFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cityFieldActionPerformed
+
+    private void addressBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addressBoxActionPerformed
+
+    private void cityBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cityBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -810,10 +792,19 @@ public class SearchListings extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField addressSearchField;
+    private javax.swing.JComboBox<String> addressBox;
+    private javax.swing.JCheckBox cityBox;
+    private javax.swing.JTextField cityField;
+    private javax.swing.JCheckBox codeBox;
+    private javax.swing.JTextField codeField;
+    private javax.swing.JCheckBox countryBox;
+    private javax.swing.JTextField countryField;
+    private javax.swing.JButton dateSearch;
     private javax.swing.JButton distanceSearch;
     private javax.swing.JTable distanceTable;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -821,31 +812,28 @@ public class SearchListings extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField latSearch;
-    private javax.swing.JTable listTable;
     private javax.swing.JTable listTableAddress;
     private javax.swing.JTextField longSearch;
-    private javax.swing.JTextField nameSearchField;
+    private javax.swing.JTextField lowerDate;
+    private javax.swing.JComboBox<String> priceBox;
     private javax.swing.JTextField priceLower;
     private javax.swing.JButton priceSearch;
     private javax.swing.JTable priceTable;
     private javax.swing.JTextField priceUpper;
     private javax.swing.JTextField rangeSlider;
-    private javax.swing.JTextField ratingField;
-    private javax.swing.JButton ratingSearch;
     private javax.swing.JTable ratingTable;
     private javax.swing.JButton searchButtonAddress;
-    private javax.swing.JButton searchButtonName;
     private javax.swing.JTabbedPane searchOptions;
-    private javax.swing.JScrollPane tableDisplay;
-    private javax.swing.JScrollPane tableDisplay1;
-    private javax.swing.JScrollPane tableDisplay2;
-    private javax.swing.JScrollPane tableDisplay3;
-    private javax.swing.JScrollPane tableDisplay4;
+    private javax.swing.JScrollPane tableDisplay5;
+    private javax.swing.JScrollPane tableDisplay6;
+    private javax.swing.JScrollPane tableDisplay7;
+    private javax.swing.JScrollPane tableDisplay8;
+    private javax.swing.JTextField upperDate;
     // End of variables declaration//GEN-END:variables
 }

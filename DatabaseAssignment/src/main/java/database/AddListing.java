@@ -47,7 +47,7 @@ public class AddListing extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         amenitiesField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        listAddressField = new javax.swing.JTextField();
+        cityField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         year = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -55,6 +55,10 @@ public class AddListing extends javax.swing.JFrame {
         date = new javax.swing.JTextField();
         rentAmount = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        postalCode = new javax.swing.JTextField();
+        countryField = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,7 +88,7 @@ public class AddListing extends javax.swing.JFrame {
 
         jLabel7.setText("Anemities");
 
-        jLabel6.setText("Address");
+        jLabel6.setText("City");
 
         jLabel8.setText("Date (YYYY-MM-DD)");
 
@@ -95,6 +99,22 @@ public class AddListing extends javax.swing.JFrame {
         });
 
         jLabel9.setText("Rent Amount");
+
+        postalCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                postalCodeActionPerformed(evt);
+            }
+        });
+
+        countryField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                countryFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Postal code");
+
+        jLabel11.setText("Country");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -113,12 +133,6 @@ public class AddListing extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rentAmount)
                             .addComponent(addListButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel7))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(listAddressField)
                             .addComponent(listDescription)
                             .addComponent(listLat)
                             .addComponent(listName)
@@ -129,11 +143,29 @@ public class AddListing extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(date, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(355, 355, 355))))
+                                .addComponent(date))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel5)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel6))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel10)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel11))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(postalCode, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(countryField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 11, Short.MAX_VALUE)))
+                        .addGap(309, 309, 309))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -149,9 +181,15 @@ public class AddListing extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(listName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(postalCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(countryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -213,23 +251,25 @@ public class AddListing extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
          
    
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO `listings` (list_address,description,list_name,longitude,latitude,amenities) VALUES (?,?,?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO `listings` (city,postal_code,country,description,list_name,longitude,latitude,amenities,rent_amount) VALUES (?,?,?,?,?,?,?,?,?)");
             //ps.setString(1,jTextField1.getText());
-            ps.setString(1,listAddressField.getText());
-            ps.setString(2,listDescription.getText());
-            ps.setString(3, listName.getText());
-            ps.setString(4,listLat.getText());
-            ps.setString(5, listLong.getText());
-            ps.setString(6, amenitiesField.getText());
+            ps.setString(1,cityField.getText());
+            ps.setString(2,postalCode.getText());
+            ps.setString(3,countryField.getText());
+            ps.setString(4,listDescription.getText());
+            ps.setString(5, listName.getText());
+            ps.setString(6,listLat.getText());
+            ps.setString(7, listLong.getText());
+            ps.setString(8, amenitiesField.getText());
+            ps.setString(9, rentAmount.getText());
             ps.executeUpdate();
             System.out.println("listing enter works");
             
 
             
-            PreparedStatement ps2 = conn.prepareStatement("INSERT INTO `listing_dates` (listings_list_id,listing_dates,rent_amount) VALUES (LAST_INSERT_ID(),?,?)");
+            PreparedStatement ps2 = conn.prepareStatement("INSERT INTO `listing_dates` (listings_list_id,listing_dates) VALUES (LAST_INSERT_ID(),?)");
             String finalDate = year.getText() + '-' + month.getText() + '-' + date.getText();
             ps2.setString(1,finalDate);
-            ps2.setString(2,rentAmount.getText());
             ps2.executeUpdate();
             System.out.println("listing dates work");
             
@@ -245,6 +285,14 @@ public class AddListing extends javax.swing.JFrame {
     private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dateActionPerformed
+
+    private void postalCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postalCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_postalCodeActionPerformed
+
+    private void countryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_countryFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,8 +332,12 @@ public class AddListing extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addListButton;
     private javax.swing.JTextField amenitiesField;
+    private javax.swing.JTextField cityField;
+    private javax.swing.JTextField countryField;
     private javax.swing.JTextField date;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -295,12 +347,12 @@ public class AddListing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField listAddressField;
     private javax.swing.JTextField listDescription;
     private javax.swing.JTextField listLat;
     private javax.swing.JTextField listLong;
     private javax.swing.JTextField listName;
     private javax.swing.JTextField month;
+    private javax.swing.JTextField postalCode;
     private javax.swing.JTextField rentAmount;
     private javax.swing.JTextField year;
     // End of variables declaration//GEN-END:variables
