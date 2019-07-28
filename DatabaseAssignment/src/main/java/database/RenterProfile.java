@@ -75,6 +75,11 @@ public class RenterProfile extends javax.swing.JFrame {
         viewTableComment = new javax.swing.JTable();
         commentField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        tableDisplay11 = new javax.swing.JScrollPane();
+        viewBookingTable1 = new javax.swing.JTable();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,7 +135,6 @@ public class RenterProfile extends javax.swing.JFrame {
         ));
         tableDisplay8.setViewportView(renterTable);
         if (renterTable.getColumnModel().getColumnCount() > 0) {
-            renterTable.getColumnModel().getColumn(0).setHeaderValue("List id");
             renterTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
@@ -247,7 +251,7 @@ public class RenterProfile extends javax.swing.JFrame {
         ));
         tableDisplay9.setViewportView(viewBookingTable);
         if (viewBookingTable.getColumnModel().getColumnCount() > 0) {
-            viewBookingTable.getColumnModel().getColumn(2).setHeaderValue("List id");
+            viewBookingTable.getColumnModel().getColumn(3).setHeaderValue("Cancelled");
         }
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -351,6 +355,9 @@ public class RenterProfile extends javax.swing.JFrame {
             }
         ));
         tableDisplay10.setViewportView(viewTableComment);
+        if (viewTableComment.getColumnModel().getColumnCount() > 0) {
+            viewTableComment.getColumnModel().getColumn(1).setHeaderValue("Cancelled");
+        }
 
         commentField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         commentField.addActionListener(new java.awt.event.ActionListener() {
@@ -362,6 +369,9 @@ public class RenterProfile extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("Comment:");
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setText("View hosts");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -372,19 +382,22 @@ public class RenterProfile extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(tableDisplay10, javax.swing.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(112, 112, 112)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(112, 112, 112)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(userComment, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(userComment))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel9)
                                 .addGap(2, 2, 2)
                                 .addComponent(userPassComment, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
+                                .addGap(141, 141, 141)
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -414,13 +427,62 @@ public class RenterProfile extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(commentField, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(jButton1)))
                 .addGap(29, 29, 29)
                 .addComponent(tableDisplay10, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         renterBooking.addTab("Comment on hosts", jPanel3);
+
+        viewBookingTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "User id", "Renting date", "List id", "List Name"
+            }
+        ));
+        tableDisplay11.setViewportView(viewBookingTable1);
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setText("User id:");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tableDisplay11, javax.swing.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(172, 172, 172)
+                .addComponent(jLabel12)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(tableDisplay11, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        renterBooking.addTab("Comment on listing", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -635,10 +697,12 @@ public class RenterProfile extends javax.swing.JFrame {
     private javax.swing.JButton commentHost;
     private javax.swing.JTextField dateField;
     private javax.swing.JTextField hostComment;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jField12;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -650,11 +714,13 @@ public class RenterProfile extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField listField;
     private javax.swing.JTextField listingField;
     private javax.swing.JTabbedPane renterBooking;
     private javax.swing.JTable renterTable;
     private javax.swing.JScrollPane tableDisplay10;
+    private javax.swing.JScrollPane tableDisplay11;
     private javax.swing.JScrollPane tableDisplay8;
     private javax.swing.JScrollPane tableDisplay9;
     private javax.swing.JTextField userComment;
@@ -663,6 +729,7 @@ public class RenterProfile extends javax.swing.JFrame {
     private javax.swing.JPasswordField userPassComment;
     private javax.swing.JPasswordField userPassword;
     private javax.swing.JTable viewBookingTable;
+    private javax.swing.JTable viewBookingTable1;
     private javax.swing.JButton viewListings;
     private javax.swing.JButton viewListingsCurrent;
     private javax.swing.JTable viewTableComment;
