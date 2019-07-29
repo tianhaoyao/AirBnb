@@ -90,6 +90,8 @@ public class RenterProfile extends javax.swing.JFrame {
         addListingComment = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         listingComment = new javax.swing.JTextField();
+        listingRating = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -496,6 +498,11 @@ public class RenterProfile extends javax.swing.JFrame {
 
         viewCommentListings.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         viewCommentListings.setText("View listings");
+        viewCommentListings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewCommentListingsActionPerformed(evt);
+            }
+        });
 
         addListingComment.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addListingComment.setText("Add comment");
@@ -507,6 +514,9 @@ public class RenterProfile extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setText("Comment:");
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel16.setText("Rating:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -520,7 +530,6 @@ public class RenterProfile extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel15)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(viewCommentListings)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -528,8 +537,15 @@ public class RenterProfile extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(listingUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel13))
+                            .addComponent(jLabel16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(listingRating)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel15))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(commentListPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel14)))
@@ -559,8 +575,11 @@ public class RenterProfile extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(listingComment, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel15)
+                        .addComponent(listingRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel16)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addComponent(tableDisplay11, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -818,7 +837,7 @@ public class RenterProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void addListingCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addListingCommentActionPerformed
-        /*
+        
         try {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -831,7 +850,7 @@ public class RenterProfile extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
          
             // checks whether the renter has rented from the host before
-            PreparedStatement ps = conn.prepareStatement("SELECT * from renter_has_listings INNER JOIN listings ON renter_has_listings.listings_list_id = listings.list_id WHERE renter_has_listings.listings_list_id=(?)");
+            PreparedStatement ps = conn.prepareStatement("SELECT * from renter_has_listings WHERE listings_list_id=(?)");
             System.out.println("ioegigijerg");
             
             ps.setString(1,commentListId.getText());
@@ -840,10 +859,11 @@ public class RenterProfile extends javax.swing.JFrame {
             // if renter rented from host then insert comment
             if (rs.next()) {
                 System.out.println("found match");
-                PreparedStatement addComment = conn.prepareStatement("INSERT INTO renter_comments (comment,commenter_id,listings_list_id,commentee_id) VALUES (?,?,?,NULL)");
+                PreparedStatement addComment = conn.prepareStatement("UPDATE renter_has_listings SET comment=?,rating=? WHERE listings_list_id=(?)");
                 addComment.setString(1,listingComment.getText());
-                addComment.setString(2,listingUserId.getText());
+                addComment.setString(2,listingRating.getText());
                 addComment.setString(3,commentListId.getText());
+                
                 addComment.executeUpdate();
             }
             else{
@@ -854,8 +874,43 @@ public class RenterProfile extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println("error");
             System.err.println(e.getMessage());
-        }*/
+        }
     }//GEN-LAST:event_addListingCommentActionPerformed
+
+    private void viewCommentListingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCommentListingsActionPerformed
+        DefaultTableModel model ;
+        model = (DefaultTableModel)viewBookingTable1.getModel();
+        model.setRowCount(0);
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+   
+            PreparedStatement ps = conn.prepareStatement("SELECT * from listings INNER JOIN bookings ON listings.list_id = bookings.listings_list_id");
+            ResultSet rs = ps.executeQuery();
+            System.out.println("listing search works");
+            model.setRowCount(1);
+            int rowIndex = 0;
+            while (rs.next() && rowIndex < model.getRowCount()) {
+                System.out.println("aioroiaerjg");
+                model.insertRow(rowIndex, 
+                        new Object [] {rs.getString("u_id"),rs.getString("booking_date"),
+                            rs.getString("listings_list_id"),rs.getString("list_name")});
+                rowIndex++;
+            }
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_viewCommentListingsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -913,6 +968,7 @@ public class RenterProfile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -928,6 +984,7 @@ public class RenterProfile extends javax.swing.JFrame {
     private javax.swing.JTextField listField;
     private javax.swing.JTextField listingComment;
     private javax.swing.JTextField listingField;
+    private javax.swing.JTextField listingRating;
     private javax.swing.JTextField listingUserId;
     private javax.swing.JTabbedPane renterBooking;
     private javax.swing.JTable renterTable;

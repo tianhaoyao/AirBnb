@@ -701,7 +701,45 @@ public class AddListing extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void addCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCommentActionPerformed
+
         // TODO add your handling code here:
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+            // checks whether the renter has rented from the host before
+            PreparedStatement ps = conn.prepareStatement("SELECT * from renter_has_listings INNER JOIN hosts_has_listings ON renter_has_listings.listings_list_id = hosts_has_listings.listings_list_id WHERE hosts_has_listings.hosts_u_id=(?)");
+            System.out.println("ioegigijerg");
+            
+            ps.setString(1,hostIdComment.getText());
+            ResultSet rs = ps.executeQuery();
+            
+            // if renter rented from host then insert comment
+            if (rs.next()) {
+                System.out.println("found match");
+                PreparedStatement addComment = conn.prepareStatement("UPDATE host_comments SET comment=?,commenter_id=?,commentee_id=?");
+                addComment.setString(1,hostCommentField.getText());
+                addComment.setString(2,hostIdComment.getText());
+                addComment.setString(3,renterCommentId.getText());
+                addComment.executeUpdate();
+            }
+            else{
+                System.out.println("no found match");
+            }
+            
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+
     }//GEN-LAST:event_addCommentActionPerformed
 
     /**
