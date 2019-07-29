@@ -250,25 +250,22 @@ public class RenterProfile extends javax.swing.JFrame {
 
         viewBookingTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "User id", "Booking date", "List id", "Cancelled"
+                "User id", "Booking date", "List id", "Cancelled", "Host id"
             }
         ));
         tableDisplay9.setViewportView(viewBookingTable);
-        if (viewBookingTable.getColumnModel().getColumnCount() > 0) {
-            viewBookingTable.getColumnModel().getColumn(3).setHeaderValue("Cancelled");
-        }
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Password:");
@@ -686,7 +683,7 @@ public class RenterProfile extends javax.swing.JFrame {
  
                 model.insertRow(rowIndex, 
                         new Object [] {rs.getString("u_id"),rs.getString("booking_date"),
-                            rs.getString("listings_list_id"),rs.getString("cancelled")});
+                            rs.getString("listings_list_id"),rs.getString("cancelled"),rs.getString("hosts_id")});
                 rowIndex++;
             }
           
