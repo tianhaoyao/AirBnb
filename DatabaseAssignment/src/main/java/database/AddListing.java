@@ -557,17 +557,17 @@ public class AddListing extends javax.swing.JFrame {
             // setup connection
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
 
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM listings L1,hosts_has_listings L2 INNER JOIN listings ON listings.list_id = L2.listings_list_id WHERE hosts_u_id = ?");
+            PreparedStatement ps = conn.prepareStatement("SELECT L.list_id,L.list_name,L.city,L.postal_code,L.country,L.rent_amount FROM listings L,hosts_has_listings H INNER JOIN listings ON listings.list_id = H.listings_list_id WHERE hosts_u_id = ?");
             ps.setString(1, hostIdField.getText());
             String oldQuery = (ps.toString().substring(49));
             System.out.println(oldQuery);
 
-            //String newQuery = "SELECT * FROM listings L1,listing_dates L2 INNER JOIN listings ON listings.list_id = L2.listings_list_id";
+            String newQuery = "(SELECT * FROM listings L,listing_dates D INNER JOIN listings ON listings.list_id = D.listings_list_id)";
 
-            //Statement s = conn.createStatement();
-            //ResultSet rs = s.executeQuery("SELECT * FROM " + oldQuery + " L3, listing_dates L4 INNER JOIN L3 ON L3.list_id = L4.listings_list_id");
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("SELECT Q.list_id,Q.list_name,Q.city,Q.postal_code,Q.country,Q.rent_amount,P.dates FROM (" + oldQuery + ") Q, listing_dates P INNER JOIN (" + oldQuery + ") A ON A.list_id = P.listings_list_id");
 
-            /*
+         
             System.out.println("listing search works");
             model.setRowCount(1);
             int rowIndex = 0;
@@ -578,7 +578,7 @@ public class AddListing extends javax.swing.JFrame {
                         rs.getString("city"),rs.getString("postal_code"),rs.getString("country"),rs.getString("rent_amount"),rs.getString("dates")});
                 rowIndex++;
             }
-            */
+            
 
         } catch (SQLException e) {
             System.out.println("error");
