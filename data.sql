@@ -65,6 +65,16 @@ INSERT INTO `my_bnb`.`bookings`(`u_id`,`booking_date`,`listings_list_id`,`cancel
 INSERT INTO `my_bnb`.`bookings`(`u_id`,`booking_date`,`listings_list_id`,`cancelled`) VALUES(7,'2019-02-11',2,'Yes');
 
 
+-- renter has listings
+INSERT INTO `my_bnb`.`renter_has_listings`(`renter_u_id`,`listings_list_id`,`comment`,`rating`) VALUES(1,1,"Clean space",5);
+INSERT INTO `my_bnb`.`renter_has_listings`(`renter_u_id`,`listings_list_id`,`comment`,`rating`) VALUES(5,2,"Dirty space",2);
+
+
+-- hosts comments
+INSERT INTO `my_bnb`.`host_comments`(`comment`,`listings_list_id`,`commenter_id`,`commentee_id`)VALUES("Very nice user",2,2,1);
+
+-- renter comments
+INSERT INTO `my_bnb`.`renter_comments`(`comment`,`listings_list_id`,`commenter_id`,`commentee_id`)VALUES("Friendly host",2,1,2);
 
 
 
