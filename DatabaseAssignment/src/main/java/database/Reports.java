@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,7 +36,7 @@ public class Reports extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        rankings = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         city = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -45,6 +46,8 @@ public class Reports extends javax.swing.JFrame {
         to = new javax.swing.JTextField();
         submitReport1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        display1 = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         city2 = new javax.swing.JTextField();
         label2 = new javax.swing.JLabel();
@@ -58,11 +61,15 @@ public class Reports extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         dateTo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        display2 = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         country = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         countrySubmit = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        display3 = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -70,6 +77,8 @@ public class Reports extends javax.swing.JFrame {
         country1 = new javax.swing.JTextField();
         city1 = new javax.swing.JTextField();
         submitCountryCity = new javax.swing.JButton();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        display4 = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         country3 = new javax.swing.JTextField();
@@ -79,10 +88,57 @@ public class Reports extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         submitCountry3 = new javax.swing.JButton();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        display5 = new javax.swing.JTextArea();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        rankTable = new javax.swing.JTable();
+        countryRank = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        rankButton = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        cityRank = new javax.swing.JTextField();
+        cityRankButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        cityRankTable = new javax.swing.JTable();
+        City = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        showCommercial = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        commercialTable = new javax.swing.JTable();
+        jPanel9 = new javax.swing.JPanel();
+        rankRenter = new javax.swing.JButton();
+        dateBefore = new javax.swing.JTextField();
+        dateAfter = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        numBookTable = new javax.swing.JTable();
+        cityy = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        rankRenterCountry = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        countryy = new javax.swing.JTextField();
+        beforeDay = new javax.swing.JTextField();
+        afterDay = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        countryBookTable = new javax.swing.JTable();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        biggestHost = new javax.swing.JButton();
+        biggestRenter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.setToolTipText("");
+        rankings.setToolTipText("");
 
         city.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +174,10 @@ public class Reports extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Number of Bookings In City Between Time Range");
 
+        display1.setColumns(20);
+        display1.setRows(5);
+        jScrollPane6.setViewportView(display1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -129,15 +189,18 @@ public class Reports extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(from, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(to, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(submitReport1))
-                    .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(to, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(55, 55, 55)
+                                .addComponent(submitReport1)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -160,10 +223,12 @@ public class Reports extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(to, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(submitReport1))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addGap(97, 97, 97)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        rankings.addTab("Number of Bookings In City Between Time Range", jPanel1);
 
         city2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,6 +262,10 @@ public class Reports extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Number of Bookings In City Between Time Range and Postal Codes");
 
+        display2.setColumns(20);
+        display2.setRows(5);
+        jScrollPane7.setViewportView(display2);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -221,15 +290,17 @@ public class Reports extends javax.swing.JFrame {
                                     .addComponent(dateFrom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                                     .addComponent(zipCode, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(zipCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(dateTo))))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel5)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(zipCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel7)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(dateTo)))))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel10)))
@@ -258,10 +329,12 @@ public class Reports extends javax.swing.JFrame {
                     .addComponent(dateTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(report2)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(196, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        rankings.addTab("Number of Bookings in City Between Time Range and Postal Codes", jPanel2);
 
         jLabel8.setText("Country");
 
@@ -275,6 +348,10 @@ public class Reports extends javax.swing.JFrame {
             }
         });
 
+        display3.setColumns(20);
+        display3.setRows(5);
+        jScrollPane8.setViewportView(display3);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -282,15 +359,20 @@ public class Reports extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(countrySubmit))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(105, 105, 105)
-                        .addComponent(jLabel11)))
+                        .addComponent(jLabel11))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(112, 112, 112)
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(countrySubmit)))
                 .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -298,15 +380,17 @@ public class Reports extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addComponent(jLabel11)
-                .addGap(90, 90, 90)
+                .addGap(63, 63, 63)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
                     .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
                     .addComponent(countrySubmit))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addGap(76, 76, 76)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(289, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab3", jPanel3);
+        rankings.addTab("Total Number of Listings for Specific Countries", jPanel3);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setText("Number of Listings for Specific Country and City");
@@ -328,24 +412,33 @@ public class Reports extends javax.swing.JFrame {
             }
         });
 
+        display4.setColumns(20);
+        display4.setRows(5);
+        jScrollPane9.setViewportView(display4);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel13))
-                        .addGap(43, 43, 43)
+                        .addGap(87, 87, 87)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(country1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(city1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(83, 83, 83)
-                        .addComponent(submitCountryCity)))
+                            .addComponent(jLabel12)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel13))
+                                .addGap(43, 43, 43)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(country1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(city1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(83, 83, 83)
+                                .addComponent(submitCountryCity))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(209, 209, 209)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(193, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -362,13 +455,15 @@ public class Reports extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(city1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(submitCountryCity))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addGap(71, 71, 71)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(252, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab4", jPanel4);
+        rankings.addTab("Number of Listings for Specific Country and City", jPanel4);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel15.setText("Number of Listings for Specific Country and Listing and Postal Code");
+        jLabel15.setText("Number of Listings for Specific Country and City and Postal Code");
 
         jLabel16.setText("Country");
 
@@ -383,6 +478,10 @@ public class Reports extends javax.swing.JFrame {
             }
         });
 
+        display5.setColumns(20);
+        display5.setRows(5);
+        jScrollPane11.setViewportView(display5);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -395,17 +494,20 @@ public class Reports extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(134, 134, 134)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel18))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(country3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                            .addComponent(city3)
-                            .addComponent(postalCode3))
+                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel18))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(country3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                    .addComponent(city3)
+                                    .addComponent(postalCode3))))
                         .addGap(64, 64, 64)
                         .addComponent(submitCountry3)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,23 +527,448 @@ public class Reports extends javax.swing.JFrame {
                     .addComponent(postalCode3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18)
                     .addComponent(submitCountry3))
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab5", jPanel5);
+        rankings.addTab("Number of Listings for Specific Country and City and Postal Code", jPanel5);
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel19.setText("Host Rankings (# of Listings) by Country");
+
+        rankTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Ranking", "Host ID", "# of Listings"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        rankTable.setCellSelectionEnabled(true);
+        jScrollPane1.setViewportView(rankTable);
+
+        countryRank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                countryRankActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("Country");
+
+        rankButton.setText("Search");
+        rankButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rankButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(jLabel20)
+                .addGap(18, 18, 18)
+                .addComponent(countryRank, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rankButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 112, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel19)
+                .addGap(169, 169, 169))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(jLabel19)
+                .addGap(67, 67, 67)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(countryRank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rankButton))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(275, Short.MAX_VALUE))
+        );
+
+        rankings.addTab("Host Ranking (# of Listings) by Country", jPanel6);
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel21.setText("Host Rankings (# of Listings) by City");
+
+        cityRankButton.setText("Submit");
+        cityRankButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cityRankButtonActionPerformed(evt);
+            }
+        });
+
+        cityRankTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Rank", "Host ID", "# of Listings"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(cityRankTable);
+
+        City.setText("City");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addGap(180, 180, 180)
+                            .addComponent(jLabel21))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(City)
+                            .addGap(26, 26, 26)
+                            .addComponent(cityRank, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(cityRankButton)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(110, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(jLabel21)
+                .addGap(53, 53, 53)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cityRank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cityRankButton)
+                    .addComponent(City))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(288, Short.MAX_VALUE))
+        );
+
+        rankings.addTab("Host Ranking (# of Listings) by City", jPanel7);
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel22.setText("Popular Hosts ");
+
+        showCommercial.setText("Show Possible Commercial Hosts");
+        showCommercial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showCommercialActionPerformed(evt);
+            }
+        });
+
+        commercialTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "#", "Host ID", "# of Listings", "Country"
+            }
+        ));
+        jScrollPane3.setViewportView(commercialTable);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap(120, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(showCommercial)
+                        .addGap(238, 238, 238))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(95, 95, 95))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(274, 274, 274))))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(jLabel22)
+                .addGap(42, 42, 42)
+                .addComponent(showCommercial)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+
+        rankings.addTab("Popular Hosts", jPanel8);
+
+        rankRenter.setText("Rank Renters by Booking");
+        rankRenter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rankRenterActionPerformed(evt);
+            }
+        });
+
+        jLabel23.setText("From Date (YYYY-MM-DD)");
+
+        jLabel24.setText("to");
+
+        numBookTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Rank", "Renter ID", "# of Bookings"
+            }
+        ));
+        jScrollPane4.setViewportView(numBookTable);
+
+        jLabel25.setText("City");
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel26.setText("Renter Booking Ranking by City and Date");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(253, 253, 253)
+                        .addComponent(rankRenter))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel23)
+                                    .addComponent(jLabel25))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cityy, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                                    .addComponent(dateBefore))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel24)
+                                .addGap(12, 12, 12)
+                                .addComponent(dateAfter, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGap(104, 104, 104)
+                                .addComponent(jLabel26)))))
+                .addContainerGap(116, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel26)
+                .addGap(36, 36, 36)
+                .addComponent(rankRenter)
+                .addGap(16, 16, 16)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cityy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dateBefore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateAfter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel23))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
+        );
+
+        rankings.addTab("Renter Booking Ranking by City and Date", jPanel9);
+
+        rankRenterCountry.setText("Rank Renters by Booking");
+        rankRenterCountry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rankRenterCountryActionPerformed(evt);
+            }
+        });
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel27.setText("Renter Bookings Ranking by Country and Date");
+
+        jLabel28.setText("Country");
+
+        jLabel29.setText("From Date (YYYY-MM-DD)");
+
+        jLabel30.setText("to");
+
+        countryBookTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Rank", "Renter ID", "# of Bookings"
+            }
+        ));
+        jScrollPane5.setViewportView(countryBookTable);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(jLabel27))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel29))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(countryy, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(beforeDay, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel30)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(afterDay, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(114, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addComponent(rankRenterCountry)
+                        .addGap(251, 251, 251))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(101, 101, 101))))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel27)
+                .addGap(53, 53, 53)
+                .addComponent(rankRenterCountry)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(countryy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(beforeDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29)
+                    .addComponent(afterDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(210, Short.MAX_VALUE))
+        );
+
+        rankings.addTab("Renter Booking Ranking by Country and Date", jPanel10);
+
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel31.setText("Biggest Cancellations Hosts and Renters");
+
+        biggestHost.setText("Biggest Cancelling Host");
+        biggestHost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                biggestHostActionPerformed(evt);
+            }
+        });
+
+        biggestRenter.setText("Biggest Cancelling Renter");
+        biggestRenter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                biggestRenterActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(jLabel31))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(biggestRenter)
+                            .addComponent(biggestHost))))
+                .addContainerGap(167, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel31)
+                .addGap(92, 92, 92)
+                .addComponent(biggestHost)
+                .addGap(78, 78, 78)
+                .addComponent(biggestRenter)
+                .addContainerGap(369, Short.MAX_VALUE))
+        );
+
+        rankings.addTab("Biggest Cancellations Host and Renters", jPanel11);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(rankings)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(rankings)
         );
 
-        jTabbedPane1.getAccessibleContext().setAccessibleName("Bookings in Date Range by City");
+        rankings.getAccessibleContext().setAccessibleName("Bookings in Date Range by City");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -470,7 +997,7 @@ public class Reports extends javax.swing.JFrame {
             // setup connection
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
          
-            PreparedStatement ps = conn.prepareStatement("SELECT * from bookings INNER JOIN listings ON bookings.listings_list_id = listings.list_id WHERE booking_date BETWEEN ? AND ? AND city=?");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM bookings INNER JOIN listings ON bookings.listings_list_id = listings.list_id WHERE booking_date BETWEEN ? AND ? AND city=?");
             
             ps.setString(1,from.getText());
             ps.setString(2,to.getText());
@@ -482,6 +1009,7 @@ public class Reports extends javax.swing.JFrame {
                 count++;
             }
             System.out.println(count);
+            display1.setText(Integer.toString(count) + " bookings");
             
           
         } catch (SQLException e) {
@@ -510,7 +1038,7 @@ public class Reports extends javax.swing.JFrame {
             // setup connection
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
          
-            PreparedStatement ps = conn.prepareStatement("SELECT * from bookings INNER JOIN listings ON bookings.listings_list_id = listings.list_id WHERE ((postal_code>? AND postal_code<?) OR postal_code=? OR postal_code=?) AND city=? AND booking_date BETWEEN ? AND ?");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM bookings INNER JOIN listings ON bookings.listings_list_id = listings.list_id WHERE ((postal_code>? AND postal_code<?) OR postal_code=? OR postal_code=?) AND city=? AND booking_date BETWEEN ? AND ?");
             
             ps.setString(1,zipCode.getText());
             ps.setString(2,zipCode2.getText());
@@ -527,7 +1055,7 @@ public class Reports extends javax.swing.JFrame {
                 count++;
             }
             System.out.println(count);
-            
+            display2.setText(Integer.toString(count) + " bookings");
           
         } catch (SQLException e) {
             System.out.println("error");
@@ -556,6 +1084,7 @@ public class Reports extends javax.swing.JFrame {
             while(rs.next()){
                 count++;
             }
+            display3.setText(Integer.toString(count) + " listings");
             System.out.println(count);
             
           
@@ -584,13 +1113,14 @@ public class Reports extends javax.swing.JFrame {
             PreparedStatement ps = conn.prepareStatement("SELECT * from listings WHERE country=? AND city=?");
             
             ps.setString(1,country1.getText());
-            ps.setString(1,city1.getText());
+            ps.setString(2,city1.getText());
             ResultSet rs = ps.executeQuery();
             
             int count = 0;
             while(rs.next()){
                 count++;
             }
+            display4.setText(Integer.toString(count) + " listings");
             System.out.println(count);
             
           
@@ -615,14 +1145,15 @@ public class Reports extends javax.swing.JFrame {
             PreparedStatement ps = conn.prepareStatement("SELECT * from listings WHERE country=? AND city=? AND postal_code=?");
             
             ps.setString(1,country3.getText());
-            ps.setString(1,city3.getText());
-            ps.setString(1,postalCode3.getText());
+            ps.setString(2,city3.getText());
+            ps.setString(3,postalCode3.getText());
             ResultSet rs = ps.executeQuery();
             
             int count = 0;
             while(rs.next()){
                 count++;
             }
+            display5.setText(Integer.toString(count) + " listings");
             System.out.println(count);
             
           
@@ -631,6 +1162,290 @@ public class Reports extends javax.swing.JFrame {
             System.err.println(e.getMessage());
         }
     }//GEN-LAST:event_submitCountry3ActionPerformed
+
+    private void countryRankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryRankActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_countryRankActionPerformed
+
+    private void rankButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankButtonActionPerformed
+         DefaultTableModel model ;
+        model = (DefaultTableModel)rankTable.getModel();
+        model.setRowCount(5);
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+                //"SELECT * FROM bookings INNER JOIN listings ON bookings.listings_list_id = listings.list_id WHERE ((postal_code>? AND postal_code<?) OR postal_code=
+            model.setRowCount(0);
+            PreparedStatement ps = conn.prepareStatement("SELECT hosts_u_id, COUNT(*) FROM (SELECT * FROM hosts_has_listings INNER JOIN listings ON hosts_has_listings.listings_list_id=listings.list_id WHERE country=?) AS subquery GROUP BY hosts_u_id ORDER BY COUNT(*) ASC");
+            ps.setString(1,countryRank.getText());
+            ResultSet rs = ps.executeQuery();
+            System.out.println("listing search works");
+            model.setRowCount(5);
+            int rowIndex = 0;
+            while (rs.next() && rowIndex < model.getRowCount()) {
+ 
+                model.insertRow(rowIndex, 
+                        new Object [] {rowIndex+1,rs.getString("hosts_u_id"),
+                            rs.getString("COUNT(*)")});
+                rowIndex++;
+            }
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_rankButtonActionPerformed
+
+    private void cityRankButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityRankButtonActionPerformed
+        DefaultTableModel model ;
+        model = (DefaultTableModel)cityRankTable.getModel();
+        model.setRowCount(5);
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+                //"SELECT * FROM bookings INNER JOIN listings ON bookings.listings_list_id = listings.list_id WHERE ((postal_code>? AND postal_code<?) OR postal_code=
+            model.setRowCount(0);
+            PreparedStatement ps = conn.prepareStatement("SELECT hosts_u_id, COUNT(*) FROM (SELECT * FROM hosts_has_listings INNER JOIN listings ON hosts_has_listings.listings_list_id=listings.list_id WHERE city=?) AS subquery GROUP BY hosts_u_id ORDER BY COUNT(*) ASC");
+            ps.setString(1,cityRank.getText());
+            ResultSet rs = ps.executeQuery();
+            System.out.println("listing search works");
+            model.setRowCount(5);
+            int rowIndex = 0;
+            while (rs.next() && rowIndex < model.getRowCount()) {
+ 
+                model.insertRow(rowIndex, 
+                        new Object [] {rowIndex+1,rs.getString("hosts_u_id"),
+                            rs.getString("COUNT(*)")});
+                rowIndex++;
+            }
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_cityRankButtonActionPerformed
+
+    private void showCommercialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCommercialActionPerformed
+        DefaultTableModel model ;
+        model = (DefaultTableModel)commercialTable.getModel();
+        model.setRowCount(10);
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+            
+                //"SELECT * FROM bookings INNER JOIN listings ON bookings.listings_list_id = listings.list_id WHERE ((postal_code>? AND postal_code<?) OR postal_code=
+            PreparedStatement ps = conn.prepareStatement("SELECT country,COUNT(*) FROM listings GROUP BY country");
+            ResultSet countries = ps.executeQuery();
+            int guideline;
+            /*
+            while(countries.next()){
+                guideline = countries.getInt("COUNT(*)")/10;
+                
+                
+                PreparedStatement oneCountry = conn.prepareStatement("SELECT hosts_u_id, COUNT(*) FROM (SELECT * FROM hosts_has_listings INNER JOIN listings ON hosts_has_listings.listings_list_id=listings.list_id WHERE country=? AND COUNT(*)>?)");
+                oneCountry.setString(1,countries.getString("country"));
+                oneCountry.setString(2, Integer.toString(guideline));
+            }*/
+            // assume host can only rent in 1 country
+            
+            String subquery1 = "(SELECT hosts_u_id, country, count(*) from hosts_has_listings inner join listings on hosts_has_listings.listings_list_id = listings.list_id group by hosts_u_id, country) as Q";
+            String subquery2 =  "(SELECT country,count(*) FROM listings GROUP BY country) as P ";
+            String query = "SELECT hosts_u_id, Q.country, count(*) FROM " + subquery1 + " INNER JOIN " + subquery2 + "ON Q.country=P.country";
+            PreparedStatement rr = conn.prepareStatement(query);
+            
+            //
+            
+            
+            
+            
+            
+            //PreparedStatement ps = conn.prepareStatement("SELECT hosts_u_id, COUNT(*) FROM (SELECT * FROM hosts_has_listings INNER JOIN listings ON hosts_has_listings.listings_list_id=listings.list_id WHERE city=?)");
+            //ps.setString(1,cityRank.getText());
+            ResultSet rs = rr.executeQuery();
+            System.out.println("listing search works");
+            model.setRowCount(10);
+            int rowIndex = 0;
+            //int listCount;
+            //int countryCount;
+            while (rs.next() && rowIndex < model.getRowCount()) {
+                //listCount = Integer.parseInt(rs.getString("P.count(*)"));
+                //countryCount = Integer.parseInt(rs.getString("Q.count(*)"));
+                //System.out.println(listCount + "" + countryCount);
+                System.out.println("siuhnah");
+                model.insertRow(rowIndex, 
+                        new Object [] {rowIndex+1,rs.getString("hosts_u_id"),
+                            rs.getString("count(*)"), rs.getString("country")});
+                rowIndex++;
+            }
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_showCommercialActionPerformed
+
+    private void rankRenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankRenterActionPerformed
+        DefaultTableModel model;
+        model = (DefaultTableModel)numBookTable.getModel();
+        model.setRowCount(5);
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+                //"SELECT * FROM bookings INNER JOIN listings ON bookings.listings_list_id = listings.list_id WHERE ((postal_code>? AND postal_code<?) OR postal_code=
+            model.setRowCount(0);
+            String query1 = "(SELECT listings_list_id,u_id from bookings WHERE booking_date >= ? AND booking_date <= ?) as P";
+            String query2 = "(SELECT city,list_id FROM listings WHERE city=?) as Q";
+            PreparedStatement ps = conn.prepareStatement("SELECT u_id, count(*) FROM (" + query1 + "NATURAL JOIN " + query2 + " ON listings_list_id=list_id) GROUP BY u_id ORDER BY count(*) DESC");
+            ps.setString(1,dateBefore.getText());
+            ps.setString(2,dateAfter.getText());
+            ps.setString(3,cityy.getText());
+            ResultSet rs = ps.executeQuery();
+            System.out.println("listing search works");
+            model.setRowCount(5);
+            int rowIndex = 0;
+            while (rs.next() && rowIndex < model.getRowCount()) {
+                System.out.println("here");
+                model.insertRow(rowIndex, 
+                        new Object [] {rowIndex+1,rs.getString("u_id"),
+                            rs.getString("count(*)")});
+                rowIndex++;
+            }
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_rankRenterActionPerformed
+
+    private void rankRenterCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankRenterCountryActionPerformed
+        DefaultTableModel model;
+        model = (DefaultTableModel)countryBookTable.getModel();
+        model.setRowCount(5);
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+                //"SELECT * FROM bookings INNER JOIN listings ON bookings.listings_list_id = listings.list_id WHERE ((postal_code>? AND postal_code<?) OR postal_code=
+            model.setRowCount(0);
+            String query1 = "(SELECT listings_list_id,u_id from bookings WHERE booking_date >= ? AND booking_date <= ?) as P";
+            String query2 = "(SELECT country,list_id FROM listings WHERE country=?) as Q";
+            PreparedStatement ps = conn.prepareStatement("SELECT u_id, count(*) FROM (" + query1 + "NATURAL JOIN " + query2 + " ON listings_list_id=list_id) GROUP BY u_id ORDER BY count(*) DESC");
+            ps.setString(1,beforeDay.getText());
+            ps.setString(2,afterDay.getText());
+            ps.setString(3,countryy.getText());
+            ResultSet rs = ps.executeQuery();
+            System.out.println("listing search works");
+            model.setRowCount(5);
+            int rowIndex = 0;
+            while (rs.next() && rowIndex < model.getRowCount()) {
+                System.out.println("here");
+                model.insertRow(rowIndex, 
+                        new Object [] {rowIndex+1,rs.getString("u_id"),
+                            rs.getString("count(*)")});
+                rowIndex++;
+            }
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_rankRenterCountryActionPerformed
+
+    private void biggestHostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biggestHostActionPerformed
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+            String query1 = "(SELECT * FROM bookings WHERE cancelled='yes') as P";
+            String query2 = "(SELECT * FROM hosts_has_listings NATURAL JOIN " + query1 + ") as Q";
+            PreparedStatement ps = conn.prepareStatement("SELECT hosts_u_id,count(*) from " + query2 + " GROUP BY hosts_u_id ORDER BY COUNT(*)");
+            ResultSet rs = ps.executeQuery();
+            int rowIndex = 0;
+            while (rs.next() && rowIndex < 1) {
+                System.out.println("here");
+                rs.getString("u_id");
+            }
+            
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_biggestHostActionPerformed
+
+    private void biggestRenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biggestRenterActionPerformed
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+            String query1 = "(SELECT * FROM bookings WHERE cancelled='yes') as P";
+            
+            PreparedStatement ps = conn.prepareStatement("SELECT u_id,count(*) from " + query1 + " GROUP BY u_id ORDER BY COUNT(*)");
+            ResultSet rs = ps.executeQuery();
+            int rowIndex = 0;
+            while (rs.next() && rowIndex < 1) {
+                System.out.println("here");
+                rs.getString("u_id");
+            }
+            
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_biggestRenterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -668,16 +1483,36 @@ public class Reports extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel City;
+    private javax.swing.JTextField afterDay;
+    private javax.swing.JTextField beforeDay;
+    private javax.swing.JButton biggestHost;
+    private javax.swing.JButton biggestRenter;
     private javax.swing.JTextField city;
     private javax.swing.JTextField city1;
     private javax.swing.JTextField city2;
     private javax.swing.JTextField city3;
+    private javax.swing.JTextField cityRank;
+    private javax.swing.JButton cityRankButton;
+    private javax.swing.JTable cityRankTable;
+    private javax.swing.JTextField cityy;
+    private javax.swing.JTable commercialTable;
     private javax.swing.JTextField country;
     private javax.swing.JTextField country1;
     private javax.swing.JTextField country3;
+    private javax.swing.JTable countryBookTable;
+    private javax.swing.JTextField countryRank;
     private javax.swing.JButton countrySubmit;
+    private javax.swing.JTextField countryy;
+    private javax.swing.JTextField dateAfter;
+    private javax.swing.JTextField dateBefore;
     private javax.swing.JTextField dateFrom;
     private javax.swing.JTextField dateTo;
+    private javax.swing.JTextArea display1;
+    private javax.swing.JTextArea display2;
+    private javax.swing.JTextArea display3;
+    private javax.swing.JTextArea display4;
+    private javax.swing.JTextArea display5;
     private javax.swing.JTextField from;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -689,8 +1524,21 @@ public class Reports extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -698,14 +1546,36 @@ public class Reports extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel label2;
+    private javax.swing.JTable numBookTable;
     private javax.swing.JTextField postalCode3;
+    private javax.swing.JButton rankButton;
+    private javax.swing.JButton rankRenter;
+    private javax.swing.JButton rankRenterCountry;
+    private javax.swing.JTable rankTable;
+    private javax.swing.JTabbedPane rankings;
     private javax.swing.JButton report2;
+    private javax.swing.JButton showCommercial;
     private javax.swing.JButton submitCountry3;
     private javax.swing.JButton submitCountryCity;
     private javax.swing.JButton submitReport1;
