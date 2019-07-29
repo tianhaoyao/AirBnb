@@ -135,6 +135,8 @@ public class Reports extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         biggestHost = new javax.swing.JButton();
         biggestRenter = new javax.swing.JButton();
+        bigHostField = new javax.swing.JTextField();
+        bigCancelField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -927,6 +929,12 @@ public class Reports extends javax.swing.JFrame {
             }
         });
 
+        bigCancelField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bigCancelFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -939,9 +947,15 @@ public class Reports extends javax.swing.JFrame {
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(biggestRenter)
-                            .addComponent(biggestHost))))
-                .addContainerGap(167, Short.MAX_VALUE))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(biggestRenter)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bigCancelField, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(biggestHost)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(bigHostField, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -949,10 +963,14 @@ public class Reports extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jLabel31)
                 .addGap(92, 92, 92)
-                .addComponent(biggestHost)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(biggestHost)
+                    .addComponent(bigHostField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(78, 78, 78)
-                .addComponent(biggestRenter)
-                .addContainerGap(369, Short.MAX_VALUE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(biggestRenter)
+                    .addComponent(bigCancelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(385, Short.MAX_VALUE))
         );
 
         rankings.addTab("Biggest Cancellations Host and Renters", jPanel11);
@@ -1408,7 +1426,7 @@ public class Reports extends javax.swing.JFrame {
             int rowIndex = 0;
             while (rs.next() && rowIndex < 1) {
                 System.out.println("here");
-                rs.getString("u_id");
+                bigHostField.setText(rs.getString("u_id"));
             }
             
           
@@ -1437,7 +1455,7 @@ public class Reports extends javax.swing.JFrame {
             int rowIndex = 0;
             while (rs.next() && rowIndex < 1) {
                 System.out.println("here");
-                rs.getString("u_id");
+                bigCancelField.setText(rs.getString("u_id"));
             }
             
           
@@ -1446,6 +1464,10 @@ public class Reports extends javax.swing.JFrame {
             System.err.println(e.getMessage());
         }
     }//GEN-LAST:event_biggestRenterActionPerformed
+
+    private void bigCancelFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bigCancelFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bigCancelFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1486,6 +1508,8 @@ public class Reports extends javax.swing.JFrame {
     private javax.swing.JLabel City;
     private javax.swing.JTextField afterDay;
     private javax.swing.JTextField beforeDay;
+    private javax.swing.JTextField bigCancelField;
+    private javax.swing.JTextField bigHostField;
     private javax.swing.JButton biggestHost;
     private javax.swing.JButton biggestRenter;
     private javax.swing.JTextField city;

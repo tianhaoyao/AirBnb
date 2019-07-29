@@ -66,6 +66,8 @@ public class AddListing extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         showPriceSuggestion = new javax.swing.JButton();
         suggestedPrice = new javax.swing.JTextField();
+        suggestedAmen = new javax.swing.JToggleButton();
+        suggestedText = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         hostIdComment = new javax.swing.JTextField();
@@ -165,6 +167,13 @@ public class AddListing extends javax.swing.JFrame {
 
         suggestedPrice.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        suggestedAmen.setText("Suggested Amen");
+        suggestedAmen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                suggestedAmenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -213,12 +222,16 @@ public class AddListing extends javax.swing.JFrame {
                                                 .addComponent(postalCode, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(countryField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 10, Short.MAX_VALUE)))
                         .addGap(30, 30, 30)
-                        .addComponent(showPriceSuggestion)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(showPriceSuggestion)
+                            .addComponent(suggestedAmen))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(suggestedPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(144, 144, 144))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(suggestedPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(suggestedText, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(59, 59, 59))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -256,11 +269,17 @@ public class AddListing extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(listDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(amenitiesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(amenitiesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(suggestedAmen))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9))
+                    .addComponent(suggestedText))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -775,6 +794,39 @@ public class AddListing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_listLatActionPerformed
 
+    private void suggestedAmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suggestedAmenActionPerformed
+       
+        
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+
+            PreparedStatement ps = conn.prepareStatement("SELECT amenities FROM `listings` WHERE city = ?");
+            ps.setString(1,cityField.getText());
+            ResultSet rs = ps.executeQuery();
+
+            System.out.println("listing search works");
+
+            String totalAmen = "";
+            while(rs.next()) {
+                totalAmen = totalAmen + rs.getString("amenities") + ", ";
+                
+            }
+
+            suggestedText.setText(totalAmen);
+
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_suggestedAmenActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -860,7 +912,9 @@ public class AddListing extends javax.swing.JFrame {
     private javax.swing.JTextField renterCommentId;
     private javax.swing.JButton showPriceSuggestion;
     private javax.swing.JTextField successField;
+    private javax.swing.JToggleButton suggestedAmen;
     private javax.swing.JTextField suggestedPrice;
+    private javax.swing.JTextField suggestedText;
     private javax.swing.JScrollPane tableDisplay5;
     private javax.swing.JTextField userTextField;
     private javax.swing.JButton viewListings;
