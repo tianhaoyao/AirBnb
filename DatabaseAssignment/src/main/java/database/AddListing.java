@@ -267,6 +267,11 @@ public class AddListing extends javax.swing.JFrame {
         jLabel12.setText("User id:");
 
         hostIdComment.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        hostIdComment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hostIdCommentActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Password:");
@@ -294,6 +299,11 @@ public class AddListing extends javax.swing.JFrame {
 
         addComment.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addComment.setText("Add comment");
+        addComment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCommentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -363,7 +373,7 @@ public class AddListing extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 892, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -484,6 +494,49 @@ public class AddListing extends javax.swing.JFrame {
     private void hostCommentFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostCommentFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_hostCommentFieldActionPerformed
+
+    private void addCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCommentActionPerformed
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+         
+            // checks whether the renter has rented from the host before
+            PreparedStatement ps = conn.prepareStatement("SELECT * from renter_has_listings INNER JOIN hosts_has_listings ON renter_has_listings.listings_list_id = hosts_has_listings.listings_list_id WHERE hosts_has_listings.hosts_u_id=(?)");
+            System.out.println("ioegigijerg");
+            
+            ps.setString(1,hostIdComment.getText());
+            ResultSet rs = ps.executeQuery();
+            
+            // if renter rented from host then insert comment
+            if (rs.next()) {
+                System.out.println("found match");
+                PreparedStatement addComment = conn.prepareStatement("UPDATE host_comments SET comment=?,commenter_id=?,commentee_id=?");
+                addComment.setString(1,hostCommentField.getText());
+                addComment.setString(2,hostIdComment.getText());
+                addComment.setString(3,renterCommentId.getText());
+                addComment.executeUpdate();
+            }
+            else{
+                System.out.println("no found match");
+            }
+            
+          
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_addCommentActionPerformed
+
+    private void hostIdCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostIdCommentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hostIdCommentActionPerformed
 
     /**
      * @param args the command line arguments
