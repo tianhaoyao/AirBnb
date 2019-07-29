@@ -64,6 +64,7 @@ public class RenterProfile extends javax.swing.JFrame {
         viewBookingTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         bookingPassword = new javax.swing.JPasswordField();
+        succField = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         userComment = new javax.swing.JTextField();
@@ -252,19 +253,19 @@ public class RenterProfile extends javax.swing.JFrame {
 
         viewBookingTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "User id", "Booking date", "List id", "Cancelled", "Host id"
+                "User id", "Booking date", "List id", "Cancelled"
             }
         ));
         tableDisplay9.setViewportView(viewBookingTable);
@@ -273,6 +274,9 @@ public class RenterProfile extends javax.swing.JFrame {
         jLabel6.setText("Password:");
 
         bookingPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        succField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        succField.setForeground(new java.awt.Color(51, 255, 51));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -302,8 +306,10 @@ public class RenterProfile extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bookDate, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelBooking)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cancelBooking)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(succField, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,7 +324,8 @@ public class RenterProfile extends javax.swing.JFrame {
                         .addComponent(listingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel5)
                         .addComponent(bookDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cancelBooking))
+                        .addComponent(cancelBooking)
+                        .addComponent(succField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -702,7 +709,7 @@ public class RenterProfile extends javax.swing.JFrame {
  
                 model.insertRow(rowIndex, 
                         new Object [] {rs.getString("u_id"),rs.getString("booking_date"),
-                            rs.getString("listings_list_id"),rs.getString("cancelled"),rs.getString("hosts_id")});
+                            rs.getString("listings_list_id"),rs.getString("cancelled")});
                 rowIndex++;
             }
           
@@ -728,18 +735,13 @@ public class RenterProfile extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
          
    
-            PreparedStatement ps = conn.prepareStatement("SELECT * from bookings WHERE u_id = ?");
+            PreparedStatement ps = conn.prepareStatement("UPDATE `bookings` SET cancelled = 'Yes' WHERE u_id = ? AND booking_date = ? AND listings_list_id = ?");
             ps.setString(1,userIdField.getText());
-            ResultSet rs = ps.executeQuery();
-            System.out.println("listing search works");
-            int rowIndex = 0;
-            while (rs.next() && rowIndex < model.getRowCount()) {
- 
-                model.insertRow(rowIndex, 
-                        new Object [] {rs.getString("u_id"),rs.getString("booking_date"),
-                            rs.getString("listings_list_id"),rs.getString("cancelled")});
-                rowIndex++;
-            }
+            ps.setString(2,bookDate.getText());
+            ps.setString(3,listingField.getText());
+            ps.executeUpdate();
+            succField.setText("Success!");
+            
           
         } catch (SQLException e) {
             System.out.println("error");
@@ -988,6 +990,7 @@ public class RenterProfile extends javax.swing.JFrame {
     private javax.swing.JTextField listingUserId;
     private javax.swing.JTabbedPane renterBooking;
     private javax.swing.JTable renterTable;
+    private javax.swing.JTextField succField;
     private javax.swing.JTextField successField;
     private javax.swing.JScrollPane tableDisplay10;
     private javax.swing.JScrollPane tableDisplay11;
