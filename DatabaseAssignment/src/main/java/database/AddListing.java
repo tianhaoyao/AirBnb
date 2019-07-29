@@ -307,6 +307,11 @@ public class AddListing extends javax.swing.JFrame {
 
         addComment.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addComment.setText("Add comment");
+        addComment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCommentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -694,6 +699,10 @@ public class AddListing extends javax.swing.JFrame {
             System.err.println(e.getMessage());
         }
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void addCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCommentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addCommentActionPerformed
 
     /**
      * @param args the command line arguments
