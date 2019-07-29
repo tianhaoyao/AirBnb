@@ -89,7 +89,9 @@ public class AddListing extends javax.swing.JFrame {
         cancelButton = new javax.swing.JButton();
         viewListings = new javax.swing.JButton();
         successField = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
+        cancelBooking = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        userTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -417,6 +419,19 @@ public class AddListing extends javax.swing.JFrame {
 
         successField.setForeground(new java.awt.Color(51, 255, 0));
 
+        cancelBooking.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cancelBooking.setText("Cancel Booking");
+        cancelBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBookingActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel19.setText("User id:");
+
+        userTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -429,26 +444,31 @@ public class AddListing extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(hostIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel18)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(listField, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel19)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel16)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(hostIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel17)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel18)))
                             .addComponent(viewListings))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(listField, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                            .addComponent(userTextField))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cancelButton)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(addButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(successField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(successField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cancelBooking))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -468,29 +488,21 @@ public class AddListing extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelButton))
+                        .addComponent(cancelButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cancelBooking)
+                            .addComponent(jLabel19)
+                            .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(viewListings)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(tableDisplay5, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jTabbedPane2.addTab("Add/Cancel Dates", jPanel3);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 887, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 496, Short.MAX_VALUE)
-        );
-
-        jTabbedPane2.addTab("tab4", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -506,69 +518,172 @@ public class AddListing extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addListButtonActionPerformed
-        // TODO add your handling code here:
-        
+    private void cancelBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBookingActionPerformed
+
         try {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
+
             // setup connection
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
-         
-   
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO `listings` (city,postal_code,country,description,list_name,longitude,latitude,amenities,rent_amount) VALUES (?,?,?,?,?,?,?,?,?)");
-            //ps.setString(1,jTextField1.getText());
-            ps.setString(1,cityField.getText());
-            ps.setString(2,postalCode.getText());
-            ps.setString(3,countryField.getText());
-            ps.setString(4,listDescription.getText());
-            ps.setString(5, listName.getText());
-            ps.setString(6,listLat.getText());
-            ps.setString(7, listLong.getText());
-            ps.setString(8, amenitiesField.getText());
-            ps.setString(9, rentAmount.getText());
+
+            PreparedStatement ps = conn.prepareStatement("UPDATE `bookings` SET cancelled = 'Yes' WHERE booking_date = ? AND listings_list_id = ?");
+            ps.setString(1, dateField.getText());
+            ps.setString(2, listField.getText());
             ps.executeUpdate();
-            System.out.println("listing enter works");
-            
+            successField.setText("Success!");
 
-            
-            PreparedStatement ps2 = conn.prepareStatement("INSERT INTO `listing_dates` (listings_list_id,dates) VALUES (LAST_INSERT_ID(),?)");
-            String finalDate = year.getText() + '-' + month.getText() + '-' + date.getText();
-            ps2.setString(1,finalDate);
-            ps2.executeUpdate();
-            System.out.println("listing dates work");
-            
-            
-            
-            
-            } catch (SQLException e){
-              System.out.println("error");
-              System.err.println(e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_cancelBookingActionPerformed
+
+    private void viewListingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewListingsActionPerformed
+
+        DefaultTableModel model ;
+        model = (DefaultTableModel)listTableHosts.getModel();
+        model.setRowCount(0);
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
             }
-    }//GEN-LAST:event_addListButtonActionPerformed
 
-    private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dateActionPerformed
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
 
-    private void postalCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postalCodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_postalCodeActionPerformed
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM listings L1,hosts_has_listings L2 INNER JOIN listings ON listings.list_id = L2.listings_list_id WHERE hosts_u_id = ?");
+            ps.setString(1, hostIdField.getText());
+            String oldQuery = (ps.toString().substring(49));
+            System.out.println(oldQuery);
 
-    private void countryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryFieldActionPerformed
+            //String newQuery = "SELECT * FROM listings L1,listing_dates L2 INNER JOIN listings ON listings.list_id = L2.listings_list_id";
+
+            //Statement s = conn.createStatement();
+            //ResultSet rs = s.executeQuery("SELECT * FROM " + oldQuery + " L3, listing_dates L4 INNER JOIN L3 ON L3.list_id = L4.listings_list_id");
+
+            /*
+            System.out.println("listing search works");
+            model.setRowCount(1);
+            int rowIndex = 0;
+            while (rs.next() && rowIndex < model.getRowCount()) {
+
+                model.insertRow(rowIndex,
+                    new Object [] {rs.getString("list_id"),rs.getString("list_name"),
+                        rs.getString("city"),rs.getString("postal_code"),rs.getString("country"),rs.getString("rent_amount"),rs.getString("dates")});
+                rowIndex++;
+            }
+            */
+
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+
+    }//GEN-LAST:event_viewListingsActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM listing_dates WHERE dates = ?");
+            ps.setString(1, dateField.getText());
+            ps.executeUpdate();
+            successField.setText("Success!");
+
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO listing_dates (dates,listings_list_id) VALUES (?,?)");
+            ps.setString(1, dateField.getText());
+            ps.setString(2, listField.getText());
+            ps.executeUpdate();
+            successField.setText("Success!");
+
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void addCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCommentActionPerformed
+
         // TODO add your handling code here:
-    }//GEN-LAST:event_countryFieldActionPerformed
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+
+            // checks whether the renter has rented from the host before
+            PreparedStatement ps = conn.prepareStatement("SELECT * from renter_has_listings INNER JOIN hosts_has_listings ON renter_has_listings.listings_list_id = hosts_has_listings.listings_list_id WHERE hosts_has_listings.hosts_u_id=(?)");
+            System.out.println("ioegigijerg");
+
+            ps.setString(1,hostIdComment.getText());
+            ResultSet rs = ps.executeQuery();
+
+            // if renter rented from host then insert comment
+            if (rs.next()) {
+                System.out.println("found match");
+                PreparedStatement addComment = conn.prepareStatement("UPDATE host_comments SET comment=?,commenter_id=?,commentee_id=?");
+                addComment.setString(1,hostCommentField.getText());
+                addComment.setString(2,hostIdComment.getText());
+                addComment.setString(3,renterCommentId.getText());
+                addComment.executeUpdate();
+            }
+            else{
+                System.out.println("no found match");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_addCommentActionPerformed
+
+    private void hostCommentFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostCommentFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hostCommentFieldActionPerformed
+
+    private void renterCommentIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renterCommentIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_renterCommentIdActionPerformed
 
     private void showPriceSuggestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPriceSuggestionActionPerformed
-        
+
         double lat = Double.parseDouble(listLat.getText());
         double lon = Double.parseDouble(listLong.getText());
-
 
         try {
             try {
@@ -584,7 +699,7 @@ public class AddListing extends javax.swing.JFrame {
             ResultSet rs = ps.executeQuery("SELECT latitude,longitude,rent_amount from listings");
 
             System.out.println("listing search works");
-            
+
             Double rentAvg = 0.0;
             int rentCounter = 0;
             while(rs.next()) {
@@ -596,166 +711,69 @@ public class AddListing extends javax.swing.JFrame {
                     rentCounter++;
                 }
             }
-            
+
             suggestedPrice.setText(String.valueOf(rentAvg/rentCounter));
-         
 
         } catch (SQLException e) {
             System.out.println("error");
             System.err.println(e.getMessage());
-        } 
+        }
     }//GEN-LAST:event_showPriceSuggestionActionPerformed
+
+    private void countryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_countryFieldActionPerformed
+
+    private void postalCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postalCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_postalCodeActionPerformed
+
+    private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateActionPerformed
+
+    private void addListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addListButtonActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // setup connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
+
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO `listings` (city,postal_code,country,description,list_name,longitude,latitude,amenities,rent_amount) VALUES (?,?,?,?,?,?,?,?,?)");
+            //ps.setString(1,jTextField1.getText());
+            ps.setString(1,cityField.getText());
+            ps.setString(2,postalCode.getText());
+            ps.setString(3,countryField.getText());
+            ps.setString(4,listDescription.getText());
+            ps.setString(5, listName.getText());
+            ps.setString(6,listLat.getText());
+            ps.setString(7, listLong.getText());
+            ps.setString(8, amenitiesField.getText());
+            ps.setString(9, rentAmount.getText());
+            ps.executeUpdate();
+            System.out.println("listing enter works");
+
+            PreparedStatement ps2 = conn.prepareStatement("INSERT INTO `listing_dates` (listings_list_id,dates) VALUES (LAST_INSERT_ID(),?)");
+            String finalDate = year.getText() + '-' + month.getText() + '-' + date.getText();
+            ps2.setString(1,finalDate);
+            ps2.executeUpdate();
+            System.out.println("listing dates work");
+
+        } catch (SQLException e){
+            System.out.println("error");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_addListButtonActionPerformed
 
     private void listLatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listLatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listLatActionPerformed
-
-    private void renterCommentIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renterCommentIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_renterCommentIdActionPerformed
-
-    private void hostCommentFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostCommentFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hostCommentFieldActionPerformed
-
-    private void viewListingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewListingsActionPerformed
-        
-        DefaultTableModel model ;
-        model = (DefaultTableModel)listTableHosts.getModel();
-        model.setRowCount(0);
-        try {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-            // setup connection
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
-     
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM listings L1,hosts_has_listings L2 INNER JOIN listings ON listings.list_id = L2.listings_list_id WHERE hosts_u_id = ?");
-            ps.setString(1, hostIdField.getText());
-            String oldQuery = (ps.toString().substring(49));
-            System.out.println(oldQuery);
-            
-            //String newQuery = "SELECT * FROM listings L1,listing_dates L2 INNER JOIN listings ON listings.list_id = L2.listings_list_id";
-            
-            
-            //Statement s = conn.createStatement();
-            //ResultSet rs = s.executeQuery("SELECT * FROM " + oldQuery + " L3, listing_dates L4 INNER JOIN L3 ON L3.list_id = L4.listings_list_id");
-            
-            /*
-            System.out.println("listing search works");
-            model.setRowCount(1);
-            int rowIndex = 0;
-            while (rs.next() && rowIndex < model.getRowCount()) {
- 
-                model.insertRow(rowIndex, 
-                        new Object [] {rs.getString("list_id"),rs.getString("list_name"),
-                            rs.getString("city"),rs.getString("postal_code"),rs.getString("country"),rs.getString("rent_amount"),rs.getString("dates")});
-                rowIndex++;
-            }
-            */
-          
-        } catch (SQLException e) {
-            System.out.println("error");
-            System.err.println(e.getMessage());
-        }
-      
-    }//GEN-LAST:event_viewListingsActionPerformed
-
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        
-        try {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-            // setup connection
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
-     
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO listing_dates (dates,listings_list_id) VALUES (?,?)");
-            ps.setString(1, dateField.getText());
-            ps.setString(2, listField.getText());
-            ps.executeUpdate();
-            successField.setText("Success!");
-            
-         
-          
-        } catch (SQLException e) {
-            System.out.println("error");
-            System.err.println(e.getMessage());
-        }
-    }//GEN-LAST:event_addButtonActionPerformed
-
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        try {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
-            }
- 
-            // setup connection
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
-     
-            PreparedStatement ps = conn.prepareStatement("DELETE FROM listing_dates WHERE dates = ?");
-            ps.setString(1, dateField.getText());
-            ps.executeUpdate();
-            successField.setText("Success!");
-            
- 
-        } catch (SQLException e) {
-            System.out.println("error");
-            System.err.println(e.getMessage());
-        }
-    }//GEN-LAST:event_cancelButtonActionPerformed
-
-    private void addCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCommentActionPerformed
-
-        // TODO add your handling code here:
-        try {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-            // setup connection
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_bnb?useSSL=false","root","rootpassword");
-         
-            // checks whether the renter has rented from the host before
-            PreparedStatement ps = conn.prepareStatement("SELECT * from renter_has_listings INNER JOIN hosts_has_listings ON renter_has_listings.listings_list_id = hosts_has_listings.listings_list_id WHERE hosts_has_listings.hosts_u_id=(?)");
-            System.out.println("ioegigijerg");
-            
-            ps.setString(1,hostIdComment.getText());
-            ResultSet rs = ps.executeQuery();
-            
-            // if renter rented from host then insert comment
-            if (rs.next()) {
-                System.out.println("found match");
-                PreparedStatement addComment = conn.prepareStatement("UPDATE host_comments SET comment=?,commenter_id=?,commentee_id=?");
-                addComment.setString(1,hostCommentField.getText());
-                addComment.setString(2,hostIdComment.getText());
-                addComment.setString(3,renterCommentId.getText());
-                addComment.executeUpdate();
-            }
-            else{
-                System.out.println("no found match");
-            }
-            
-          
-        } catch (SQLException e) {
-            System.out.println("error");
-            System.err.println(e.getMessage());
-        }
-
-    }//GEN-LAST:event_addCommentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -797,6 +815,7 @@ public class AddListing extends javax.swing.JFrame {
     private javax.swing.JButton addComment;
     private javax.swing.JButton addListButton;
     private javax.swing.JTextField amenitiesField;
+    private javax.swing.JButton cancelBooking;
     private javax.swing.JButton cancelButton;
     private javax.swing.JTextField cityField;
     private javax.swing.JTextField countryField;
@@ -816,6 +835,7 @@ public class AddListing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -827,7 +847,6 @@ public class AddListing extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField listDescription;
     private javax.swing.JTextField listField;
@@ -843,6 +862,7 @@ public class AddListing extends javax.swing.JFrame {
     private javax.swing.JTextField successField;
     private javax.swing.JTextField suggestedPrice;
     private javax.swing.JScrollPane tableDisplay5;
+    private javax.swing.JTextField userTextField;
     private javax.swing.JButton viewListings;
     private javax.swing.JTextField year;
     // End of variables declaration//GEN-END:variables
