@@ -48,11 +48,21 @@ INSERT INTO `my_bnb`.`listing_dates`(`dates`,`listings_list_id`)VALUES('2019-02-
 INSERT INTO `my_bnb`.`listing_dates`(`dates`,`listings_list_id`)VALUES('2019-02-04',4);
 INSERT INTO `my_bnb`.`listing_dates`(`dates`,`listings_list_id`)VALUES('2019-03-22',4);
 
+-- hosts has listings
+
+
+INSERT INTO `my_bnb`.`hosts_has_listings` (`hosts_u_id`,`listings_list_id`) VALUES (2,1);
+INSERT INTO `my_bnb`.`hosts_has_listings` (`hosts_u_id`,`listings_list_id`) VALUES (3,2);
+INSERT INTO `my_bnb`.`hosts_has_listings` (`hosts_u_id`,`listings_list_id`) VALUES (4,3);
+INSERT INTO `my_bnb`.`hosts_has_listings` (`hosts_u_id`,`listings_list_id`) VALUES (8,4);
+INSERT INTO `my_bnb`.`hosts_has_listings` (`hosts_u_id`,`listings_list_id`) VALUES (10,5);
+
+
 -- booking dates
-INSERT INTO `my_bnb`.`bookings`(`u_id`,`booking_date`,`listings_list_id`,`cancelled`) VALUES(1,'2019-04-11',5,'No');
-INSERT INTO `my_bnb`.`bookings`(`u_id`,`booking_date`,`listings_list_id`,`cancelled`) VALUES(5,'2019-04-11',3,'No');
-INSERT INTO `my_bnb`.`bookings`(`u_id`,`booking_date`,`listings_list_id`,`cancelled`) VALUES(6,'2019-11-11',1,'No');
-INSERT INTO `my_bnb`.`bookings`(`u_id`,`booking_date`,`listings_list_id`,`cancelled`) VALUES(7,'2019-02-11',2,'Yes');
+INSERT INTO `my_bnb`.`bookings`(`u_id`,`booking_date`,`listings_list_id`,`cancelled`,`hosts_id`) VALUES(1,'2019-04-11',5,'No',10);
+INSERT INTO `my_bnb`.`bookings`(`u_id`,`booking_date`,`listings_list_id`,`cancelled`,`hosts_id`) VALUES(5,'2019-04-11',3,'No',4);
+INSERT INTO `my_bnb`.`bookings`(`u_id`,`booking_date`,`listings_list_id`,`cancelled`,`hosts_id`) VALUES(6,'2019-11-11',1,'No',2);
+INSERT INTO `my_bnb`.`bookings`(`u_id`,`booking_date`,`listings_list_id`,`cancelled`,`hosts_id`) VALUES(7,'2019-02-11',2,'Yes',3);
 
 
 

@@ -50,6 +50,7 @@ public class RenterProfile extends javax.swing.JFrame {
         userField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         userPassword = new javax.swing.JPasswordField();
+        successField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         userIdField = new javax.swing.JTextField();
@@ -155,6 +156,9 @@ public class RenterProfile extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Password:");
 
+        successField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        successField.setForeground(new java.awt.Color(0, 255, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -185,8 +189,10 @@ public class RenterProfile extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(userField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
-                        .addComponent(bookButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(bookButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(successField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,12 +206,13 @@ public class RenterProfile extends javax.swing.JFrame {
                     .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bookButton)
                     .addComponent(jField12)
-                    .addComponent(userField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(successField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
                     .addComponent(userPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(tableDisplay8, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -642,7 +649,12 @@ public class RenterProfile extends javax.swing.JFrame {
             ps.executeUpdate();
             System.out.println("Booking worked!");
             
-          
+            PreparedStatement ps2 = conn.prepareStatement("DELETE FROM listing_dates WHERE dates = ? AND listings_list_id = ?");
+            ps2.setString(1,dateField.getText());
+            ps2.setString(2,listField.getText());
+            ps2.executeUpdate();
+            successField.setText("Success!");
+ 
         } catch (SQLException e) {
             System.out.println("error");
             System.err.println(e.getMessage());
@@ -922,6 +934,7 @@ public class RenterProfile extends javax.swing.JFrame {
     private javax.swing.JTextField listingUserId;
     private javax.swing.JTabbedPane renterBooking;
     private javax.swing.JTable renterTable;
+    private javax.swing.JTextField successField;
     private javax.swing.JScrollPane tableDisplay10;
     private javax.swing.JScrollPane tableDisplay11;
     private javax.swing.JScrollPane tableDisplay8;

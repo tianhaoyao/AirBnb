@@ -104,9 +104,11 @@ CREATE TABLE IF NOT EXISTS `my_bnb`.`bookings` (
   `booking_date` DATE NULL,
   `listings_list_id` INT NOT NULL,
   `cancelled` VARCHAR(5) NOT NULL,
-  PRIMARY KEY (`u_id`, `listings_list_id`),
+  `hosts_id` INT NOT NULL,
+  PRIMARY KEY (`u_id`, `listings_list_id`,`hosts_id`),
   FOREIGN KEY (`u_id`) REFERENCES `my_bnb`.`renter` (`u_id`),
-  FOREIGN KEY (`listings_list_id`) REFERENCES `my_bnb`.`listings` (`list_id`)
+  FOREIGN KEY (`listings_list_id`) REFERENCES `my_bnb`.`listings` (`list_id`),
+  FOREIGN KEY (`hosts_id`) REFERENCES `my_bnb`.`hosts` (`u_id`)
   );
 
 
